@@ -1,0 +1,8 @@
+{
+  "flow": {
+    "node": {
+      "approver": "approver",
+      "approver-rule": "rule"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+@reference "tailwindcss";
+
+
+
+:global(html) {
+    background-color: theme(--color-gray-100);
+}
+:global(body) {
+    @apply text-gray-900;
+}
+
+.flex-left-nav-container {
+    @apply h-dvh w-1/8 pl-0 border-r-1 border-gray-200;
+    background-color: theme(--color-blue-50);
+}
+
+.flex-main-container {
+    @apply flex h-dvh w-dvw overflow-hidden;
+    background-color: theme(--color-gray-100);
+}
+
+.main-content-container {
+    @apply flex w-7/8 h-auto;
+    flex-direction: column;
+   // background-color: theme(--color-gray-100);
+}
+
+.flex-header-container {
+    @apply flex w-dvw h-15 border-b-1 border-gray-200;
+    background-color: theme(--color-gray-50);
+}
+
+.logo-home-place {
+    @apply flex items-center justify-start ml-4;
+    width: 100%;
+    height: 100%;
+}
+
+.logo-image {
+    @apply h-15 w-20 ml-2;
+}
+
+.flex-top-search-bar {
+    @apply flex items-center justify-center;
+    width: 100%;
+    height: 100%;
+}
+
+.flow-sider-container {
+    @apply pl-15 border-l-1 border-gray-200;
+    background-color: theme(--color-blue-50);
+}
+
+
+.right-side-container {
+    @apply flex w-1/8 h-dvh pl-0 border-l-1  border-gray-200;
+    background-color: theme(--color-blue-50);
+}
+
+.flow-container {
+    @apply shadow-md rounded-md bg-white flex relative flex-col cursor-pointer w-50 min-h-18 ;
+}
+
+.flow-node-header {
+    @apply   flex  items-center py-4 px-12  shadow-md rounded-md   ;
+}
+
+.flow-node-footer {
+    @apply  p-8 flex flex-1 flex-col justify-center;
+}
+
+.flow-node-footer-content {
+    @apply bg-gray-100 py-4 px-8 rounded-md flex flex-col  justify-center;
+}
+
+@tailwind utilities;

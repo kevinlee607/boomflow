@@ -1,0 +1,10 @@
+{
+  "node": {
+    "start": "选择触发方式",
+    "start-content": "初始化",
+    "end": "结束",
+    "approver": "审批人",
+    "approver-rule": "审批规则",
+    "condition": "条件"
+  }
+}
