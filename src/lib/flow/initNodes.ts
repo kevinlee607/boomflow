@@ -15,8 +15,9 @@ export const initialNodes: Node[] = [
 
 export const initialEdges: Edge[] = [];
 
-export default function generateRondomId(length: number): string {
-  return Math.random()
+export function generateRondomId(prefix: string, length: number): string {
+  let id = Math.random()
     .toString(36)
     .substring(2, length + 2);
+  return `${prefix}-${id}`;
 }

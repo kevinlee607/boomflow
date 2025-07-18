@@ -6,7 +6,7 @@
 
 <div class="shadow-md rounded-md bg-white cursor-pointer w-40">
     <div class="flex justify-center shadow-md rounded-md px-2 py-2 bg-white">
-        <div class="text-[10px] text-gray-500">
+        <div class="text-sm text-gray-500">
             {$t("flow.node.start")}
         </div>
     </div>

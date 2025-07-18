@@ -16,7 +16,17 @@ export const config: Config = {
     {
       locale: "zh",
       key: "flow",
-      loader: async () => await import("./zh-CN/flow.json"),
+      loader: async () => await import("./zh/flow.json"),
+    },
+    {
+      locale: "zh",
+      key: "common",
+      loader: async () => await import("./zh/common.json"),
+    },
+    {
+      locale: "en",
+      key: "common",
+      loader: async () => await import("./en/common.json"),
     },
   ],
 };

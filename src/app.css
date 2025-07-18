@@ -1,76 +1,102 @@
 @reference "tailwindcss";
 
-
-
+/* --- 全局重置和基础布局 --- */
 :global(html) {
-    background-color: theme(--color-gray-100);
+    @apply h-full w-full;
+    background-color: #f7f7f7; /* 灰色背景 */
 }
 :global(body) {
-    @apply text-gray-900;
+    @apply text-gray-900 h-full w-full m-0 p-0;
+    overflow: hidden; /* 防止 body 出现滚动条 */
+    font-family:
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        "Noto Sans",
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji";
 }
 
-.flex-left-nav-container {
-    @apply h-dvh w-1/8 pl-0 border-r-1 border-gray-200;
-    background-color: theme(--color-blue-50);
+/* --- 主布局容器：垂直排列的 header 和 content-wrapper --- */
+.cosp-layout-container {
+    @apply flex flex-col h-dvh w-dvw overflow-hidden; /* 占据整个视口，垂直排列 */
+    background-color: #f7f7f7; /* 确保背景色填充 */
 }
 
-.flex-main-container {
-    @apply flex h-dvh w-dvw overflow-hidden;
-    background-color: theme(--color-gray-100);
+/* --- 顶部 Header --- */
+.top-navbar {
+    @apply flex items-center justify-between h-12 flex-shrink-0 border-b border-gray-200 bg-white px-4 shadow-sm; /* 固定高度，不被压缩 */
 }
 
-.main-content-container {
-    @apply flex w-7/8 h-auto;
-    flex-direction: column;
-   // background-color: theme(--color-gray-100);
+/* --- 内容包装器：水平排列的 nav 和 main --- */
+.content-wrapper {
+    @apply flex flex-grow overflow-hidden; /* 占据 header 下方所有空间，并允许内部滚动 */
 }
 
-.flex-header-container {
-    @apply flex w-dvw h-15 border-b-1 border-gray-200;
-    background-color: theme(--color-gray-50);
+/* --- 左侧导航栏 --- */
+.left-sidebar {
+    @apply flex-shrink-0 border-r border-gray-200 bg-white;
+    overflow-y: auto; /* 允许左侧导航内容滚动 */
+    /* height: 100% 会相对于父元素高度。在 content-wrapper 中 flex-grow 会使其占据可用空间。 */
 }
 
-.logo-home-place {
-    @apply flex items-center justify-start ml-4;
-    width: 100%;
-    height: 100%;
+/* --- 右侧主内容区域 (main 标签) --- */
+.page-content-wrapper {
+    @apply flex-grow p-4 bg-gray-100 overflow-y-auto; /* 占据所有剩余水平空间，并允许内容滚动 */
 }
 
-.logo-image {
-    @apply h-15 w-20 ml-2;
+/* --- Search Bar and User Actions (保持不变) --- */
+.search-bar-container {
+    @apply flex-grow max-w-xl mx-4;
 }
 
-.flex-top-search-bar {
-    @apply flex items-center justify-center;
-    width: 100%;
-    height: 100%;
+.search-input {
+    @apply w-full p-2 pl-10 pr-3 rounded-full bg-gray-100 border border-transparent focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>');
+    background-repeat: no-repeat;
+    background-position: 8px center;
+    background-size: 18px;
 }
 
-.flow-sider-container {
-    @apply pl-15 border-l-1 border-gray-200;
-    background-color: theme(--color-blue-50);
+.user-actions {
+    @apply flex items-center space-x-2;
 }
 
-
-.right-side-container {
-    @apply flex w-1/8 h-dvh pl-0 border-l-1  border-gray-200;
-    background-color: theme(--color-blue-50);
+.profile-button {
+    @apply p-1 rounded-md hover:bg-gray-200 transition-colors duration-150;
 }
 
+/* --- 节点相关样式 (保持不变) --- */
 .flow-container {
-    @apply shadow-md rounded-md bg-white flex relative flex-col cursor-pointer w-50 min-h-18 ;
+    @apply shadow-md rounded-md bg-white flex relative flex-col cursor-pointer w-40 min-h-10 overflow-hidden;
 }
 
 .flow-node-header {
-    @apply   flex  items-center py-4 px-12  shadow-md rounded-md   ;
+    @apply flex items-center justify-center p-2 rounded-t-md text-white font-bold text-sm w-full min-h-4;
+    box-sizing: border-box;
+}
+
+.flow-node-header-input {
+    @apply w-full h-full text-xs text-gray-800 text-center bg-transparent border-none focus:outline-none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 .flow-node-footer {
-    @apply  p-8 flex flex-1 flex-col justify-center;
+    @apply p-2 flex flex-1 flex-col justify-center;
 }
 
 .flow-node-footer-content {
-    @apply bg-gray-100 py-4 px-8 rounded-md flex flex-col  justify-center;
+    @apply bg-gray-100 py-2 px-2 rounded-md flex flex-col justify-center;
 }
 
 @tailwind utilities;

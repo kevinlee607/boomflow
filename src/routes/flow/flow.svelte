@@ -5,40 +5,47 @@
         Controls,
         MiniMap,
         useSvelteFlow,
+        useNodesData,
         type OnConnectEnd,
         type Node,
         type Edge,
+        type Connection,
     } from "@xyflow/svelte";
     import "@xyflow/svelte/dist/style.css";
-    import { t } from "$lib/translations";
 
-    import { initialNodes, initialEdges } from "$lib/flow/nodes-edges";
-    import generateRandomId from "$lib/flow/nodes-edges";
+    import {
+        initialNodes,
+        initialEdges,
+        generateRondomId,
+    } from "$lib/flow/initNodes";
     import CustomNode from "./CustomNodes.svelte";
     import StartNode from "./StartNode.svelte";
     import EndNode from "./EndNode.svelte";
-    import CustomNodes from "./CustomNodes.svelte";
+    import { t } from "$lib/translations";
 
     const nodeTypes = {
         custom: CustomNode,
         end: EndNode,
         start: StartNode,
     };
-    const { screenToFlowPosition } = useSvelteFlow();
+
+    let nodes = $state.raw<Node[]>(initialNodes);
+    let edges = $state.raw<Edge[]>(initialEdges);
+
+    const { updateNode, screenToFlowPosition } = useSvelteFlow();
 
     const handleConnectEnd: OnConnectEnd = (event, connectionState) => {
         if (connectionState.isValid) return;
 
-        const sourceNodeId = connectionState.fromNode?.id ?? "start";
-        const tartgetNodeId = connectionState.toNode?.id ?? "end";
-        const id = generateRandomId(12);
+        const sourceNodeId = connectionState.fromNode?.id ?? "1";
+        const id = generateRondomId("app", 8);
         const { clientX, clientY } =
             "changedTouches" in event ? event.changedTouches[0] : event;
 
         const newNode: Node = {
             id,
             data: {
-                name: `Node-${id}`,
+                name: id,
                 param: [
                     { label: t.get("flow.node.approver"), data: "Kevin Li" },
                     {
@@ -47,16 +54,15 @@
                     },
                 ],
             },
+            type: "custom",
             // project the screen coordinates to pane coordinates
             position: screenToFlowPosition({
                 x: clientX,
                 y: clientY,
             }),
-
             // set the origin of the new node so it is centered
             origin: [0.5, 0.0],
         };
-        newNode.type = "custom";
         nodes = [...nodes, newNode];
         edges = [
             ...edges,
@@ -68,8 +74,32 @@
         ];
     };
 
-    let nodes = $state.raw<Node[]>(initialNodes);
-    let edges = $state.raw<Edge[]>(initialEdges);
+    // updateNode is used to update the node position when dragging
+    const updateNodeData = (nodeId: string, newData: Record<string, any>) => {
+        updateNode(nodeId, (node) => ({
+            ...node,
+            data: {
+                ...node.data,
+                ...newData,
+            },
+        }));
+    };
+
+    const updateNodeType = (nodeId: string, newType: string) => {
+        updateNode(nodeId, (node) => ({
+            ...node,
+            type: newType,
+        }));
+    };
+    const updateNodePosition = (
+        nodeId: string,
+        newPosition: { x: number; y: number },
+    ) => {
+        updateNode(nodeId, (node) => ({
+            ...node,
+            position: newPosition,
+        }));
+    };
 </script>
 
 <SvelteFlow

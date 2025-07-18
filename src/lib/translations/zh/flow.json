@@ -5,6 +5,7 @@
     "end": "结束",
     "approver": "审批人",
     "approver-rule": "审批规则",
+    "approver-init-name": "普通审批",
     "condition": "条件"
   }
 }
