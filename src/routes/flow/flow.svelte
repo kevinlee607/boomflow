@@ -5,7 +5,6 @@
         Controls,
         MiniMap,
         useSvelteFlow,
-        useNodesData,
         type OnConnectEnd,
         type Node,
         type Edge,
@@ -13,11 +12,7 @@
     } from "@xyflow/svelte";
     import "@xyflow/svelte/dist/style.css";
 
-    import {
-        initialNodes,
-        initialEdges,
-        generateRondomId,
-    } from "$lib/flow/initNodes";
+    import { getNodes, generateRondomId, getEdges } from "$lib/flow/initNodes";
     import CustomNode from "./CustomNodes.svelte";
     import StartNode from "./StartNode.svelte";
     import EndNode from "./EndNode.svelte";
@@ -29,9 +24,8 @@
         start: StartNode,
     };
 
-    let nodes = $state.raw<Node[]>(initialNodes);
-    let edges = $state.raw<Edge[]>(initialEdges);
-
+    let nodes = $state.raw<Node[]>(getNodes());
+    let edges = $state.raw<Edge[]>(getEdges());
     const { updateNode, screenToFlowPosition } = useSvelteFlow();
 
     const handleConnectEnd: OnConnectEnd = (event, connectionState) => {

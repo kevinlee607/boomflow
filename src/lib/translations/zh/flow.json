@@ -1,5 +1,6 @@
 {
   "node": {
+    "defaultName": "默认节点",
     "start": "选择触发方式",
     "start-content": "初始化",
     "end": "结束",
