@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const nodeSchema = z.object({
+export const nodeSchema = z.object({
   code: z.number().optional(),
   message: z.string().optional(),
   data: z.object({
@@ -28,13 +28,31 @@ const nodeSchema = z.object({
               })
               .optional(),
           }),
+          type: z.string().optional(),
+          position: z
+            .object({
+              x: z.number(),
+              y: z.number(),
+            })
+            .optional(),
           spec: z.object({
-            type: z.string().optional(),
-            position: z
-              .object({
-                x: z.number(),
-                y: z.number(),
-              })
+            outPut: z.any().optional(),
+            inPut: z.any().optional(),
+            config: z
+              .array(
+                z.object({
+                  key: z.string(),
+                  value: z.string(),
+                }),
+              )
+              .optional(),
+            rules: z
+              .array(
+                z.object({
+                  key: z.string(),
+                  value: z.string(),
+                }),
+              )
               .optional(),
             params: z
               .array(
@@ -58,7 +76,7 @@ const nodeSchema = z.object({
         z.object({
           name: z.string(),
           default: z.boolean(),
-          descprition: z.string().optional(),
+          description: z.string().optional(),
         }),
       ),
     }),
@@ -107,7 +125,6 @@ export type NodeData = z.infer<typeof nodeSchema>;
 
 export async function fetchDataWithZod(apiUrl: string): Promise<NodeData> {
   const data = await fetchDataUnknown(apiUrl);
-  console.log(data);
   try {
     const parsedData = nodeSchema.parse(data);
     return parsedData;

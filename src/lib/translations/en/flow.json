@@ -1,8 +1,21 @@
 {
-  "flow": {
-    "node": {
-      "approver": "approver",
-      "approver-rule": "rule"
-    }
+  "node": {
+    "defaultName": "默认节点",
+    "start": "选择触发方式",
+    "start-content": "初始化",
+    "end": "结束",
+    "approver": "审批人",
+    "approver-rule": "审批规则",
+    "approver-init-name": "普通审批",
+    "rules": "条件/规则",
+    "config": "配置",
+    "outPut": "输出",
+    "inPut": "输入",
+    "condition": "条件分支",
+    "param": "节点参数"
+  },
+  "edge": {
+    "defaultName": "默认连线",
+    "condition": "条件分支"
   }
 }

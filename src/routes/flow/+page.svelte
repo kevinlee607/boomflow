@@ -4,6 +4,10 @@
     }
     // 定义右侧边栏的开/关状态
     export const sidebarState = new SidebarState();
+    // Function to toggle sidebar visibility (used for double-click action)
+    function closeSidebar() {
+        sidebarState.isSidebarOpen = false;
+    }
 </script>
 
 <script lang="ts">
@@ -13,7 +17,7 @@
     import Sidebar from "$lib/flow/sidebar.svelte";
 </script>
 
-<div class="flex flex-col md:flex-row min-h-screen bg-gray-100 w-full relative">
+<div class="flex flex-col md:flex-row h-dvh bg-gray-100 w-full relative">
     <div
         class="flex-grow
             {sidebarState.isSidebarOpen ? 'md:w-3/4 lg:w-4/5' : 'md:w-full'}
@@ -27,10 +31,10 @@
     </div>
 
     <aside
-        class="right-sidebar p-4 bg-gray-50 flex-shrink-0
-            transition-all duration-300 ease-in-out
-            {sidebarState.isSidebarOpen
-            ? 'md:w-1/4 lg:w-1/5'
+        class=" sticky flex flex-col bg-gray-50 flex-shrink-0
+                transition-all duration-300 ease-in-out
+                {sidebarState.isSidebarOpen
+            ? 'md:w-2/4 lg:w-2/5 p-0' // When open, apply padding here
             : 'md:w-0 md:p-0 md:overflow-hidden'}"
     >
         <Sidebar />

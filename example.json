@@ -1,4 +1,6 @@
 {
+  "code": 0,
+  "message": "success",
   "data": {
     "name": "0XVExfDNSYGr30MATwykww",
     "displayName": "IT工单流程",
@@ -21,6 +23,21 @@
       ],
       "nodes": [
         {
+          "name": "start",
+          "Metadata": {
+            "Annotations": {
+              "web.pipelineNode/name": "开始",
+              "web.pipelineNode/updateFormType": "work-form"
+            }
+          },
+          "type": "start",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "spec": {}
+        },
+        {
           "name": "tableDataUpdatexYuedCnikTefsQtkgas9W",
           "Metadata": {
             "Annotations": {
@@ -28,9 +45,13 @@
               "web.pipelineNode/updateFormType": "work-form"
             }
           },
+          "type": "form-update-data",
+          "position": {
+            "x": 0,
+            "y": 100
+          },
           "spec": {
-            "type": "form-update-data",
-            "params": [
+            "config": [
               {
                 "key": "appID",
                 "value": "$(params.appID)"
@@ -46,7 +67,9 @@
               {
                 "key": "targetTableID",
                 "value": "889h8"
-              },
+              }
+            ],
+            "rules": [
               {
                 "key": "updateRule",
                 "value": "[{\"fieldName\":\"field_7D5byNDw\",\"valueFrom\":\"fixedValue\",\"valueOf\":\"未开始\"}]"
@@ -65,8 +88,13 @@
               "web.pipelineNode/name": "IT工单分类"
             }
           },
+          "type": "approve",
+          "position": {
+            "x": 0,
+            "y": 200
+          },
           "spec": {
-            "type": "approve",
+            "config": [],
             "params": [
               {
                 "key": "appID",
@@ -160,9 +188,13 @@
               "web.pipelineNode/updateFormType": "work-form"
             }
           },
+          "type": "form-update-data",
+          "position": {
+            "x": 0,
+            "y": 300
+          },
           "spec": {
-            "type": "form-update-data",
-            "params": [
+            "config": [
               {
                 "key": "appID",
                 "value": "$(params.appID)"
@@ -178,17 +210,20 @@
               {
                 "key": "targetTableID",
                 "value": "889h8"
-              },
-              {
-                "key": "updateRule",
-                "value": "[{\"fieldName\":\"field_7D5byNDw\",\"valueFrom\":\"fixedValue\",\"valueOf\":\"处理中\"}]"
-              },
-              {
-                "key": "filterRule",
-                "value": "{\"conditions\":[]}"
               }
-            ]
-          }
+            ],
+            "params": []
+          },
+          "rules": [
+            {
+              "key": "updateRule",
+              "value": "[{\"fieldName\":\"field_7D5byNDw\",\"valueFrom\":\"fixedValue\",\"valueOf\":\"处理中\"}]"
+            },
+            {
+              "key": "filterRule",
+              "value": "{\"conditions\":[]}"
+            }
+          ]
         },
         {
           "name": "processBranch9ViGl4vrPZ8LCQOjAWCZD",
@@ -198,9 +233,13 @@
               "web.pipelineNode/name": "Jira&Wiki项目分支"
             }
           },
+          "type": "process-branch",
+          "position": {
+            "x": 0,
+            "y": 400
+          },
           "spec": {
-            "type": "process-branch",
-            "params": [
+            "config": [
               {
                 "key": "appID",
                 "value": "$(params.appID)"
@@ -212,7 +251,9 @@
               {
                 "key": "dataID",
                 "value": "$(params.dataID)"
-              },
+              }
+            ],
+            "params": [
               {
                 "key": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
                 "value": "$(communal.flowVar_1yzosVNyQb6w5NvER2C7Nw)"
@@ -248,7 +289,9 @@
               {
                 "key": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ",
                 "value": "$(communal.flowVar_ydFk2VCGRwm-DDYNlC3fEQ)"
-              },
+              }
+            ],
+            "rules": [
               {
                 "key": "rule",
                 "value": "[$field_Pi2D4YiN] == \"JIRA项目\" || [$field_Pi2D4YiN] == \"WIKI空间\""
@@ -265,9 +308,13 @@
               "web.pipelineNode/name": "邮箱业务分支"
             }
           },
+          "type": "process-branch",
+          "position": {
+            "x": -150,
+            "y": 500
+          },
           "spec": {
-            "type": "process-branch",
-            "params": [
+            "config": [
               {
                 "key": "appID",
                 "value": "$(params.appID)"
@@ -279,7 +326,9 @@
               {
                 "key": "dataID",
                 "value": "$(params.dataID)"
-              },
+              }
+            ],
+            "params": [
               {
                 "key": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
                 "value": "$(communal.flowVar_1yzosVNyQb6w5NvER2C7Nw)"
@@ -315,7 +364,9 @@
               {
                 "key": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ",
                 "value": "$(communal.flowVar_ydFk2VCGRwm-DDYNlC3fEQ)"
-              },
+              }
+            ],
+            "rules": [
               {
                 "key": "rule",
                 "value": "[$field_Pi2D4YiN] == \"邮箱业务\""
@@ -332,9 +383,13 @@
               "web.pipelineNode/name": "IT问题分支"
             }
           },
+          "type": "process-branch",
+          "position": {
+            "x": 0,
+            "y": 500
+          },
           "spec": {
-            "type": "process-branch",
-            "params": [
+            "config": [
               {
                 "key": "appID",
                 "value": "$(params.appID)"
@@ -346,7 +401,9 @@
               {
                 "key": "dataID",
                 "value": "$(params.dataID)"
-              },
+              }
+            ],
+            "params": [
               {
                 "key": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
                 "value": "$(communal.flowVar_1yzosVNyQb6w5NvER2C7Nw)"
@@ -382,7 +439,9 @@
               {
                 "key": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ",
                 "value": "$(communal.flowVar_ydFk2VCGRwm-DDYNlC3fEQ)"
-              },
+              }
+            ],
+            "rules": [
               {
                 "key": "rule",
                 "value": "[$field_Pi2D4YiN] == \"IT问题上报\" || [$field_Pi2D4YiN] == \"IT技术支持\""
@@ -396,13 +455,17 @@
           "Metadata": {
             "Annotations": {
               "web.pipelineNode/branchTargetElementID": "processBranchTargetjWkWskQpeHJmEJhPWxN1E",
-              "web.pipelineNode/isElseBranch": "true",
+              "web.pipelineNode/isElseBranch": true,
               "web.pipelineNode/name": "其他分支"
             }
           },
+          "type": "process-branch",
+          "position": {
+            "x": 150,
+            "y": 500
+          },
           "spec": {
-            "type": "process-branch",
-            "params": [
+            "config": [
               {
                 "key": "appID",
                 "value": "$(params.appID)"
@@ -414,7 +477,9 @@
               {
                 "key": "dataID",
                 "value": "$(params.dataID)"
-              },
+              }
+            ],
+            "params": [
               {
                 "key": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
                 "value": "$(communal.flowVar_1yzosVNyQb6w5NvER2C7Nw)"
@@ -462,7 +527,9 @@
               {
                 "key": "processBranch7PWhtgVZBvMJzd0vFZYGp",
                 "value": "$(task.processBranch7PWhtgVZBvMJzd0vFZYGp.output.ok)"
-              },
+              }
+            ],
+            "rules": [
               {
                 "key": "rule",
                 "value": "[processBranch9ViGl4vrPZ8LCQOjAWCZD]==false&&[processBranchmD7bwJ_bNq2gs6uGHCIQu]==false&&[processBranch7PWhtgVZBvMJzd0vFZYGp]==false"
@@ -472,1658 +539,112 @@
           }
         },
         {
-          "name": "approvexbYbr4mL7PT84tQXRk7mF",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranch9ViGl4vrPZ8LCQOjAWCZD",
-              "web.pipelineNode/branchTargetElementID": "processBranchTargetjWkWskQpeHJmEJhPWxN1E",
-              "web.pipelineNode/name": "直属审批"
-            }
+          "name": "end",
+          "Metadata": {},
+          "type": "end",
+          "position": {
+            "x": 0,
+            "y": 600
           },
-          "spec": {
-            "type": "approve",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "flowID",
-                "value": "0XVExfDNSYGr30MATwykww"
-              },
-              {
-                "key": "nodeDefKey",
-                "value": "approvexbYbr4mL7PT84tQXRk7mF"
-              },
-              {
-                "key": "flowCreatedBy",
-                "value": "600972366"
-              },
-              {
-                "key": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
-                "value": "$(communal.flowVar_1yzosVNyQb6w5NvER2C7Nw)"
-              },
-              {
-                "key": "flowVar_EZ034Y82RgOAZtPef2KS2Q",
-                "value": "$(communal.flowVar_EZ034Y82RgOAZtPef2KS2Q)"
-              },
-              {
-                "key": "flowVar_HSyEPLI5R8GrndCQcbSK6Q",
-                "value": "$(communal.flowVar_HSyEPLI5R8GrndCQcbSK6Q)"
-              },
-              {
-                "key": "flowVar_NoRuSO9OQIKJ-av0pz4qaw",
-                "value": "$(communal.flowVar_NoRuSO9OQIKJ-av0pz4qaw)"
-              },
-              {
-                "key": "flowVar_r-Cv7b6kTbi76gHSI5UvgQ",
-                "value": "$(communal.flowVar_r-Cv7b6kTbi76gHSI5UvgQ)"
-              },
-              {
-                "key": "flowVar_RR6_IccHTMCJpozb86x9OA",
-                "value": "$(communal.flowVar_RR6_IccHTMCJpozb86x9OA)"
-              },
-              {
-                "key": "flowVar_T0rZytWjRO2KygHoa_1EKA",
-                "value": "$(communal.flowVar_T0rZytWjRO2KygHoa_1EKA)"
-              },
-              {
-                "key": "flowVar_XAS_EUwcSru7CeNK3g0ojA",
-                "value": "$(communal.flowVar_XAS_EUwcSru7CeNK3g0ojA)"
-              },
-              {
-                "key": "SYS_AUDIT_BOOL",
-                "value": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ"
-              },
-              {
-                "key": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ",
-                "value": "$(communal.flowVar_ydFk2VCGRwm-DDYNlC3fEQ)"
-              },
-              {
-                "key": "taskType",
-                "value": "or"
-              },
-              {
-                "key": "dealUsers",
-                "value": "leader"
-              },
-              {
-                "key": "nodeInfo",
-                "value": "{\"id\":\"approvexbYbr4mL7PT84tQXRk7mF\",\"type\":\"approve\",\"data\":{\"nodeData\":{\"name\":\"直属审批\",\"parentID\":[\"processBranch9ViGl4vrPZ8LCQOjAWCZD\"],\"childrenID\":[\"processBranchSource12HEfnuqgH0k73C5m0YPs\"],\"branchTargetElementID\":\"processBranchTargetjWkWskQpeHJmEJhPWxN1E\",\"branchID\":\"processBranch9ViGl4vrPZ8LCQOjAWCZD\"},\"businessData\":{\"basicConfig\":{\"approvePersons\":{\"departments\":[],\"type\":\"superior\",\"users\":[]},\"autoRules\":[],\"multiplePersonWay\":\"or\",\"timeRule\":{\"deadLine\":{\"breakPoint\":\"\",\"day\":0,\"hours\":0,\"minutes\":0,\"urge\":{\"day\":0,\"hours\":0,\"minutes\":0,\"repeat\":{\"day\":0,\"hours\":0,\"minutes\":0}}},\"enabled\":false,\"whenTimeout\":{\"type\":\"\",\"value\":\"\"}},\"whenNoPerson\":\"transferAdmin\"},\"fieldPermission\":{\"_id\":{\"fieldName\":\"id\",\"x-internal\":{\"permission\":0}},\"created_at\":{\"fieldName\":\"创建时间\",\"x-internal\":{\"permission\":0}},\"creator_id\":{\"fieldName\":\"创建者 ID\",\"x-internal\":{\"permission\":0}},\"creator_name\":{\"fieldName\":\"创建者\",\"x-internal\":{\"permission\":0}},\"field_2VIQN05W\":{\"fieldName\":\"项目/空间名称\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_4vDDUNMJ\":{\"fieldName\":\"标题\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_5fWi4qzX\":{\"fieldName\":\"呈报人信息\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_7D5byNDw\":{\"fieldName\":\"工单状态\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":3}},\"field_7hkBF8Pf\":{\"fieldName\":\"呈报人一级部门VP\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_8whGMF94\":{\"fieldName\":\"wiki空间权限\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_8z1NEkul\":{\"fieldName\":\"驳回理由\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_9OMnHgfP\":{\"fieldName\":\"邮箱名称\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_AUygiiF5\":{\"fieldName\":\"部门负责人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_BREQxBAv\":{\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_DdxZGLdk\":{\"fieldName\":\"负责人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_Iml70z1w\":{\"fieldName\":\"包含部门/人员\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_NTas6SBo\":{\"fieldName\":\"附件上传\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_Pi2D4YiN\":{\"fieldName\":\"工单类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_SJAmVSBO\":{\"fieldName\":\"IT系统\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_Tt9Qs3si\":{\"fieldName\":\"问题信息\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_Uv4bRPeS\":{\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_Vk7VA38w\":{\"fieldName\":\"处理进度\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_WlvApknS\":{\"fieldName\":\"呈报人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_YA7nwaAC\":{\"fieldName\":\"wiki空间类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_Yi8ld5Q7\":{\"fieldName\":\"编号\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":3}},\"field_enSrh0Kv\":{\"fieldName\":\"理由/问题描述\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_gQquFvnF\":{\"fieldName\":\"优先级\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_gwK1bqTZ\":{\"fieldName\":\"是否转需求\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":3}},\"field_id46h2nr\":{\"fieldName\":\"呈报人所在部门\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_jnOC1TI2\":{\"fieldName\":\"包含人员/部门\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_jq2XyCAI\":{\"fieldName\":\"邮箱类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_q9DKMcEV\":{\"fieldName\":\"图片上传\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_vYkx86Np\":{\"fieldName\":\"Jira项目类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"modifier_id\":{\"fieldName\":\"修改者 ID\",\"x-internal\":{\"permission\":0}},\"modifier_name\":{\"fieldName\":\"修改者\",\"x-internal\":{\"permission\":0}},\"subtable_field_eNLTRUNf\":{\"fieldName\":\"负责人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"subtable_field_oPUVzzg4\":{\"fieldName\":\"处理内容\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"subtable_field_vHFrB0WV\":{\"fieldName\":\"处理进度\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"subtable_field_xSrnPgp1\":{\"fieldName\":\"处理日期\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"updated_at\":{\"fieldName\":\"修改时间\",\"x-internal\":{\"permission\":0}}},\"operatorPermission\":{\"system\":[{\"changeable\":false,\"enabled\":true,\"name\":\"通过\",\"only\":\"approve\",\"reasonRequired\":false,\"text\":\"通过\",\"value\":\"AGREE\"},{\"changeable\":false,\"enabled\":true,\"name\":\"拒绝\",\"only\":\"approve\",\"reasonRequired\":true,\"text\":\"拒绝\",\"value\":\"REFUSE\"}]},\"subFieldPermission\":{}}}}"
-              },
-              {
-                "key": "subFieldPermission",
-                "value": "{}"
-              }
-            ],
-            "outPut": ["agree"],
-            "when": [
-              {
-                "input": "$(task.processBranch9ViGl4vrPZ8LCQOjAWCZD.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
+          "spec": {}
+        }
+      ],
+      "edges": [
+        {
+          "id": "start",
+          "source": "start",
+          "target": "tableDataUpdatexYuedCnikTefsQtkgas9W"
         },
         {
-          "name": "approvenuZZVmHy0eP2KrqzjdzYo",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranchmD7bwJ_bNq2gs6uGHCIQu",
-              "web.pipelineNode/branchTargetElementID": "processBranchTargetjWkWskQpeHJmEJhPWxN1E",
-              "web.pipelineNode/name": "上级审批"
-            }
-          },
-          "spec": {
-            "type": "approve",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "flowID",
-                "value": "0XVExfDNSYGr30MATwykww"
-              },
-              {
-                "key": "nodeDefKey",
-                "value": "approvenuZZVmHy0eP2KrqzjdzYo"
-              },
-              {
-                "key": "flowCreatedBy",
-                "value": "600972366"
-              },
-              {
-                "key": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
-                "value": "$(communal.flowVar_1yzosVNyQb6w5NvER2C7Nw)"
-              },
-              {
-                "key": "flowVar_EZ034Y82RgOAZtPef2KS2Q",
-                "value": "$(communal.flowVar_EZ034Y82RgOAZtPef2KS2Q)"
-              },
-              {
-                "key": "flowVar_HSyEPLI5R8GrndCQcbSK6Q",
-                "value": "$(communal.flowVar_HSyEPLI5R8GrndCQcbSK6Q)"
-              },
-              {
-                "key": "flowVar_NoRuSO9OQIKJ-av0pz4qaw",
-                "value": "$(communal.flowVar_NoRuSO9OQIKJ-av0pz4qaw)"
-              },
-              {
-                "key": "flowVar_r-Cv7b6kTbi76gHSI5UvgQ",
-                "value": "$(communal.flowVar_r-Cv7b6kTbi76gHSI5UvgQ)"
-              },
-              {
-                "key": "flowVar_RR6_IccHTMCJpozb86x9OA",
-                "value": "$(communal.flowVar_RR6_IccHTMCJpozb86x9OA)"
-              },
-              {
-                "key": "flowVar_T0rZytWjRO2KygHoa_1EKA",
-                "value": "$(communal.flowVar_T0rZytWjRO2KygHoa_1EKA)"
-              },
-              {
-                "key": "flowVar_XAS_EUwcSru7CeNK3g0ojA",
-                "value": "$(communal.flowVar_XAS_EUwcSru7CeNK3g0ojA)"
-              },
-              {
-                "key": "SYS_AUDIT_BOOL",
-                "value": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ"
-              },
-              {
-                "key": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ",
-                "value": "$(communal.flowVar_ydFk2VCGRwm-DDYNlC3fEQ)"
-              },
-              {
-                "key": "taskType",
-                "value": "or"
-              },
-              {
-                "key": "dealUsers",
-                "value": "leader"
-              },
-              {
-                "key": "nodeInfo",
-                "value": "{\"id\":\"approvenuZZVmHy0eP2KrqzjdzYo\",\"type\":\"approve\",\"data\":{\"nodeData\":{\"name\":\"上级审批\",\"parentID\":[\"processBranchmD7bwJ_bNq2gs6uGHCIQu\"],\"childrenID\":[\"approves6xg67HPjJe8KC9RTtDSW\"],\"branchTargetElementID\":\"processBranchTargetjWkWskQpeHJmEJhPWxN1E\",\"branchID\":\"processBranchmD7bwJ_bNq2gs6uGHCIQu\"},\"businessData\":{\"basicConfig\":{\"approvePersons\":{\"departments\":[],\"type\":\"superior\",\"users\":[]},\"autoRules\":[],\"multiplePersonWay\":\"or\",\"timeRule\":{\"deadLine\":{\"breakPoint\":\"\",\"day\":0,\"hours\":0,\"minutes\":0,\"urge\":{\"day\":0,\"hours\":0,\"minutes\":0,\"repeat\":{\"day\":0,\"hours\":0,\"minutes\":0}}},\"enabled\":false,\"whenTimeout\":{\"type\":\"\",\"value\":\"\"}},\"whenNoPerson\":\"transferAdmin\"},\"fieldPermission\":{\"_id\":{\"fieldName\":\"id\",\"x-internal\":{\"permission\":0}},\"created_at\":{\"fieldName\":\"创建时间\",\"x-internal\":{\"permission\":0}},\"creator_id\":{\"fieldName\":\"创建者 ID\",\"x-internal\":{\"permission\":0}},\"creator_name\":{\"fieldName\":\"创建者\",\"x-internal\":{\"permission\":0}},\"field_2VIQN05W\":{\"fieldName\":\"项目/空间名称\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_4vDDUNMJ\":{\"fieldName\":\"标题\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_5fWi4qzX\":{\"fieldName\":\"呈报人信息\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_7D5byNDw\":{\"fieldName\":\"工单状态\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":3}},\"field_7hkBF8Pf\":{\"fieldName\":\"呈报人一级部门VP\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_8whGMF94\":{\"fieldName\":\"wiki空间权限\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_8z1NEkul\":{\"fieldName\":\"驳回理由\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_9OMnHgfP\":{\"fieldName\":\"邮箱名称\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_AUygiiF5\":{\"fieldName\":\"部门负责人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_BREQxBAv\":{\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_DdxZGLdk\":{\"fieldName\":\"负责人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_Iml70z1w\":{\"fieldName\":\"包含部门/人员\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_NTas6SBo\":{\"fieldName\":\"附件上传\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_Pi2D4YiN\":{\"fieldName\":\"工单类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_SJAmVSBO\":{\"fieldName\":\"IT系统\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_Tt9Qs3si\":{\"fieldName\":\"问题信息\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_Uv4bRPeS\":{\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_Vk7VA38w\":{\"fieldName\":\"处理进度\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_WlvApknS\":{\"fieldName\":\"呈报人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_YA7nwaAC\":{\"fieldName\":\"wiki空间类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_Yi8ld5Q7\":{\"fieldName\":\"编号\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":3}},\"field_enSrh0Kv\":{\"fieldName\":\"理由/问题描述\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_gQquFvnF\":{\"fieldName\":\"优先级\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_gwK1bqTZ\":{\"fieldName\":\"是否转需求\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":3}},\"field_id46h2nr\":{\"fieldName\":\"呈报人所在部门\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_jnOC1TI2\":{\"fieldName\":\"包含人员/部门\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_jq2XyCAI\":{\"fieldName\":\"邮箱类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_q9DKMcEV\":{\"fieldName\":\"图片上传\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_vYkx86Np\":{\"fieldName\":\"Jira项目类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"modifier_id\":{\"fieldName\":\"修改者 ID\",\"x-internal\":{\"permission\":0}},\"modifier_name\":{\"fieldName\":\"修改者\",\"x-internal\":{\"permission\":0}},\"subtable_field_eNLTRUNf\":{\"fieldName\":\"负责人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"subtable_field_oPUVzzg4\":{\"fieldName\":\"处理内容\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"subtable_field_vHFrB0WV\":{\"fieldName\":\"处理进度\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"subtable_field_xSrnPgp1\":{\"fieldName\":\"处理日期\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"updated_at\":{\"fieldName\":\"修改时间\",\"x-internal\":{\"permission\":0}}},\"operatorPermission\":{\"system\":[{\"changeable\":false,\"enabled\":true,\"name\":\"通过\",\"only\":\"approve\",\"reasonRequired\":false,\"text\":\"通过\",\"value\":\"AGREE\"},{\"changeable\":false,\"enabled\":true,\"name\":\"拒绝\",\"only\":\"approve\",\"reasonRequired\":true,\"text\":\"拒绝\",\"value\":\"REFUSE\"}]},\"subFieldPermission\":{}}}}"
-              },
-              {
-                "key": "subFieldPermission",
-                "value": "{}"
-              }
-            ],
-            "outPut": ["agree"],
-            "when": [
-              {
-                "input": "$(task.processBranchmD7bwJ_bNq2gs6uGHCIQu.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
+          "id": "1234",
+          "source": "tableDataUpdatexYuedCnikTefsQtkgas9W",
+          "target": "approvew-d92SYv_PUDSbEEQrtRW"
         },
         {
-          "name": "approveYXvZ-WYTj38QyvUWC1Hs1",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranch7PWhtgVZBvMJzd0vFZYGp",
-              "web.pipelineNode/branchTargetElementID": "processBranchTargetjWkWskQpeHJmEJhPWxN1E",
-              "web.pipelineNode/name": "负责人处理"
-            }
-          },
-          "spec": {
-            "type": "approve",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "flowID",
-                "value": "0XVExfDNSYGr30MATwykww"
-              },
-              {
-                "key": "nodeDefKey",
-                "value": "approveYXvZ-WYTj38QyvUWC1Hs1"
-              },
-              {
-                "key": "flowCreatedBy",
-                "value": "600972366"
-              },
-              {
-                "key": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
-                "value": "$(communal.flowVar_1yzosVNyQb6w5NvER2C7Nw)"
-              },
-              {
-                "key": "flowVar_EZ034Y82RgOAZtPef2KS2Q",
-                "value": "$(communal.flowVar_EZ034Y82RgOAZtPef2KS2Q)"
-              },
-              {
-                "key": "flowVar_HSyEPLI5R8GrndCQcbSK6Q",
-                "value": "$(communal.flowVar_HSyEPLI5R8GrndCQcbSK6Q)"
-              },
-              {
-                "key": "flowVar_NoRuSO9OQIKJ-av0pz4qaw",
-                "value": "$(communal.flowVar_NoRuSO9OQIKJ-av0pz4qaw)"
-              },
-              {
-                "key": "flowVar_r-Cv7b6kTbi76gHSI5UvgQ",
-                "value": "$(communal.flowVar_r-Cv7b6kTbi76gHSI5UvgQ)"
-              },
-              {
-                "key": "flowVar_RR6_IccHTMCJpozb86x9OA",
-                "value": "$(communal.flowVar_RR6_IccHTMCJpozb86x9OA)"
-              },
-              {
-                "key": "flowVar_T0rZytWjRO2KygHoa_1EKA",
-                "value": "$(communal.flowVar_T0rZytWjRO2KygHoa_1EKA)"
-              },
-              {
-                "key": "flowVar_XAS_EUwcSru7CeNK3g0ojA",
-                "value": "$(communal.flowVar_XAS_EUwcSru7CeNK3g0ojA)"
-              },
-              {
-                "key": "SYS_AUDIT_BOOL",
-                "value": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ"
-              },
-              {
-                "key": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ",
-                "value": "$(communal.flowVar_ydFk2VCGRwm-DDYNlC3fEQ)"
-              },
-              {
-                "key": "taskType",
-                "value": "or"
-              },
-              {
-                "key": "dealUsers",
-                "value": "field.field_DdxZGLdk"
-              },
-              {
-                "key": "nodeInfo",
-                "value": "{\"id\":\"approveYXvZ-WYTj38QyvUWC1Hs1\",\"type\":\"approve\",\"data\":{\"nodeData\":{\"name\":\"负责人处理\",\"parentID\":[\"processBranch7PWhtgVZBvMJzd0vFZYGp\"],\"childrenID\":[\"processBranchTargetjWkWskQpeHJmEJhPWxN1E\"],\"branchTargetElementID\":\"processBranchTargetjWkWskQpeHJmEJhPWxN1E\",\"branchID\":\"processBranch7PWhtgVZBvMJzd0vFZYGp\"},\"businessData\":{\"basicConfig\":{\"approvePersons\":{\"departments\":[],\"fields\":[\"field_DdxZGLdk\"],\"type\":\"field\",\"users\":[]},\"autoRules\":[],\"multiplePersonWay\":\"or\",\"timeRule\":{\"deadLine\":{\"breakPoint\":\"\",\"day\":0,\"hours\":0,\"minutes\":0,\"urge\":{\"day\":0,\"hours\":0,\"minutes\":0,\"repeat\":{\"day\":0,\"hours\":0,\"minutes\":0}}},\"enabled\":false,\"whenTimeout\":{\"type\":\"\",\"value\":\"\"}},\"whenNoPerson\":\"transferAdmin\"},\"fieldPermission\":{\"_id\":{\"fieldName\":\"id\",\"x-internal\":{\"permission\":0}},\"created_at\":{\"fieldName\":\"创建时间\",\"x-internal\":{\"permission\":0}},\"creator_id\":{\"fieldName\":\"创建者 ID\",\"x-internal\":{\"permission\":0}},\"creator_name\":{\"fieldName\":\"创建者\",\"x-internal\":{\"permission\":0}},\"field_2VIQN05W\":{\"fieldName\":\"项目/空间名称\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_4vDDUNMJ\":{\"fieldName\":\"标题\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_5fWi4qzX\":{\"fieldName\":\"呈报人信息\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_7D5byNDw\":{\"fieldName\":\"工单状态\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":3}},\"field_7hkBF8Pf\":{\"fieldName\":\"呈报人一级部门VP\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_8whGMF94\":{\"fieldName\":\"wiki空间权限\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_8z1NEkul\":{\"fieldName\":\"驳回理由\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_9OMnHgfP\":{\"fieldName\":\"邮箱名称\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_AUygiiF5\":{\"fieldName\":\"部门负责人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_BREQxBAv\":{\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_DdxZGLdk\":{\"fieldName\":\"负责人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_NTas6SBo\":{\"fieldName\":\"附件上传\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_Pi2D4YiN\":{\"fieldName\":\"工单类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_SJAmVSBO\":{\"fieldName\":\"IT系统\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_Tt9Qs3si\":{\"fieldName\":\"问题信息\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_Uv4bRPeS\":{\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_Vk7VA38w\":{\"fieldName\":\"处理进度\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_WlvApknS\":{\"fieldName\":\"呈报人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_YA7nwaAC\":{\"fieldName\":\"wiki空间类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_Yi8ld5Q7\":{\"fieldName\":\"编号\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":3}},\"field_enSrh0Kv\":{\"fieldName\":\"理由/问题描述\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_gQquFvnF\":{\"fieldName\":\"优先级\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_id46h2nr\":{\"fieldName\":\"呈报人所在部门\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_jnOC1TI2\":{\"fieldName\":\"包含人员/部门\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_jq2XyCAI\":{\"fieldName\":\"邮箱类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_q9DKMcEV\":{\"fieldName\":\"图片上传\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_vYkx86Np\":{\"fieldName\":\"Jira项目类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"modifier_id\":{\"fieldName\":\"修改者 ID\",\"x-internal\":{\"permission\":0}},\"modifier_name\":{\"fieldName\":\"修改者\",\"x-internal\":{\"permission\":0}},\"subtable_field_eNLTRUNf\":{\"fieldName\":\"负责人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"subtable_field_oPUVzzg4\":{\"fieldName\":\"处理内容\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"subtable_field_vHFrB0WV\":{\"fieldName\":\"处理进度\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"subtable_field_xSrnPgp1\":{\"fieldName\":\"处理日期\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"updated_at\":{\"fieldName\":\"修改时间\",\"x-internal\":{\"permission\":0}}},\"operatorPermission\":{\"system\":[{\"changeable\":false,\"enabled\":true,\"name\":\"通过\",\"only\":\"approve\",\"reasonRequired\":false,\"text\":\"通过\",\"value\":\"AGREE\"},{\"changeable\":false,\"enabled\":true,\"name\":\"拒绝\",\"only\":\"approve\",\"reasonRequired\":true,\"text\":\"拒绝\",\"value\":\"REFUSE\"}]},\"subFieldPermission\":{}}}}"
-              },
-              {
-                "key": "subFieldPermission",
-                "value": "{}"
-              }
-            ],
-            "outPut": ["agree"],
-            "when": [
-              {
-                "input": "$(task.processBranch7PWhtgVZBvMJzd0vFZYGp.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
+          "id": "1yzosVNyQb6w5NvER2C7Nw",
+          "source": "approvew-d92SYv_PUDSbEEQrtRW",
+          "target": "tableDataUpdateOMHmaanQSFDFpsc-BIWUa"
         },
         {
-          "name": "approve3KhlMELkPYrddSyxwA_cn",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranchMBTkGrBJRSF_Ihs8I_Rau",
-              "web.pipelineNode/branchTargetElementID": "processBranchTargetjWkWskQpeHJmEJhPWxN1E",
-              "web.pipelineNode/name": "上级审批"
-            }
-          },
-          "spec": {
-            "type": "approve",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "flowID",
-                "value": "0XVExfDNSYGr30MATwykww"
-              },
-              {
-                "key": "nodeDefKey",
-                "value": "approve3KhlMELkPYrddSyxwA_cn"
-              },
-              {
-                "key": "flowCreatedBy",
-                "value": "600972366"
-              },
-              {
-                "key": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
-                "value": "$(communal.flowVar_1yzosVNyQb6w5NvER2C7Nw)"
-              },
-              {
-                "key": "flowVar_EZ034Y82RgOAZtPef2KS2Q",
-                "value": "$(communal.flowVar_EZ034Y82RgOAZtPef2KS2Q)"
-              },
-              {
-                "key": "flowVar_HSyEPLI5R8GrndCQcbSK6Q",
-                "value": "$(communal.flowVar_HSyEPLI5R8GrndCQcbSK6Q)"
-              },
-              {
-                "key": "flowVar_NoRuSO9OQIKJ-av0pz4qaw",
-                "value": "$(communal.flowVar_NoRuSO9OQIKJ-av0pz4qaw)"
-              },
-              {
-                "key": "flowVar_r-Cv7b6kTbi76gHSI5UvgQ",
-                "value": "$(communal.flowVar_r-Cv7b6kTbi76gHSI5UvgQ)"
-              },
-              {
-                "key": "flowVar_RR6_IccHTMCJpozb86x9OA",
-                "value": "$(communal.flowVar_RR6_IccHTMCJpozb86x9OA)"
-              },
-              {
-                "key": "flowVar_T0rZytWjRO2KygHoa_1EKA",
-                "value": "$(communal.flowVar_T0rZytWjRO2KygHoa_1EKA)"
-              },
-              {
-                "key": "flowVar_XAS_EUwcSru7CeNK3g0ojA",
-                "value": "$(communal.flowVar_XAS_EUwcSru7CeNK3g0ojA)"
-              },
-              {
-                "key": "SYS_AUDIT_BOOL",
-                "value": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ"
-              },
-              {
-                "key": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ",
-                "value": "$(communal.flowVar_ydFk2VCGRwm-DDYNlC3fEQ)"
-              },
-              {
-                "key": "taskType",
-                "value": "or"
-              },
-              {
-                "key": "dealUsers",
-                "value": "leader"
-              },
-              {
-                "key": "nodeInfo",
-                "value": "{\"id\":\"approve3KhlMELkPYrddSyxwA_cn\",\"type\":\"approve\",\"data\":{\"nodeData\":{\"name\":\"上级审批\",\"parentID\":[\"processBranchMBTkGrBJRSF_Ihs8I_Rau\"],\"childrenID\":[\"approveiFatWoiJMildUwkw0gWpm\"],\"branchTargetElementID\":\"processBranchTargetjWkWskQpeHJmEJhPWxN1E\",\"branchID\":\"processBranchMBTkGrBJRSF_Ihs8I_Rau\"},\"businessData\":{\"basicConfig\":{\"approvePersons\":{\"departments\":[],\"type\":\"superior\",\"users\":[]},\"autoRules\":[],\"multiplePersonWay\":\"or\",\"timeRule\":{\"deadLine\":{\"breakPoint\":\"\",\"day\":0,\"hours\":0,\"minutes\":0,\"urge\":{\"day\":0,\"hours\":0,\"minutes\":0,\"repeat\":{\"day\":0,\"hours\":0,\"minutes\":0}}},\"enabled\":false,\"whenTimeout\":{\"type\":\"\",\"value\":\"\"}},\"whenNoPerson\":\"transferAdmin\"},\"fieldPermission\":{\"_id\":{\"fieldName\":\"id\",\"x-internal\":{\"permission\":0}},\"created_at\":{\"fieldName\":\"创建时间\",\"x-internal\":{\"permission\":0}},\"creator_id\":{\"fieldName\":\"创建者 ID\",\"x-internal\":{\"permission\":0}},\"creator_name\":{\"fieldName\":\"创建者\",\"x-internal\":{\"permission\":0}},\"field_2VIQN05W\":{\"fieldName\":\"项目/空间名称\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_4vDDUNMJ\":{\"fieldName\":\"标题\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_5fWi4qzX\":{\"fieldName\":\"呈报人信息\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_7D5byNDw\":{\"fieldName\":\"工单状态\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":3}},\"field_7hkBF8Pf\":{\"fieldName\":\"呈报人一级部门VP\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_8whGMF94\":{\"fieldName\":\"wiki空间权限\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_8z1NEkul\":{\"fieldName\":\"驳回理由\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_9OMnHgfP\":{\"fieldName\":\"邮箱名称\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_AUygiiF5\":{\"fieldName\":\"部门负责人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_BREQxBAv\":{\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_DdxZGLdk\":{\"fieldName\":\"负责人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_NTas6SBo\":{\"fieldName\":\"附件上传\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_Pi2D4YiN\":{\"fieldName\":\"工单类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_SJAmVSBO\":{\"fieldName\":\"IT系统\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_Tt9Qs3si\":{\"fieldName\":\"问题信息\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_Uv4bRPeS\":{\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_Vk7VA38w\":{\"fieldName\":\"处理进度\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_WlvApknS\":{\"fieldName\":\"呈报人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_YA7nwaAC\":{\"fieldName\":\"wiki空间类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_Yi8ld5Q7\":{\"fieldName\":\"编号\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":3}},\"field_enSrh0Kv\":{\"fieldName\":\"理由/问题描述\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_gQquFvnF\":{\"fieldName\":\"优先级\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_id46h2nr\":{\"fieldName\":\"呈报人所在部门\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_jnOC1TI2\":{\"fieldName\":\"包含人员/部门\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_jq2XyCAI\":{\"fieldName\":\"邮箱类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_q9DKMcEV\":{\"fieldName\":\"图片上传\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_vYkx86Np\":{\"fieldName\":\"Jira项目类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"modifier_id\":{\"fieldName\":\"修改者 ID\",\"x-internal\":{\"permission\":0}},\"modifier_name\":{\"fieldName\":\"修改者\",\"x-internal\":{\"permission\":0}},\"subtable_field_eNLTRUNf\":{\"fieldName\":\"负责人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"subtable_field_oPUVzzg4\":{\"fieldName\":\"处理内容\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"subtable_field_vHFrB0WV\":{\"fieldName\":\"处理进度\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"subtable_field_xSrnPgp1\":{\"fieldName\":\"处理日期\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"updated_at\":{\"fieldName\":\"修改时间\",\"x-internal\":{\"permission\":0}}},\"operatorPermission\":{\"system\":[{\"changeable\":false,\"enabled\":true,\"name\":\"通过\",\"only\":\"approve\",\"reasonRequired\":false,\"text\":\"通过\",\"value\":\"AGREE\"},{\"changeable\":false,\"enabled\":true,\"name\":\"拒绝\",\"only\":\"approve\",\"reasonRequired\":true,\"text\":\"拒绝\",\"value\":\"REFUSE\"}]},\"subFieldPermission\":{}}}}"
-              },
-              {
-                "key": "subFieldPermission",
-                "value": "{}"
-              }
-            ],
-            "outPut": ["agree"],
-            "when": [
-              {
-                "input": "$(task.processBranchMBTkGrBJRSF_Ihs8I_Rau.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
+          "id": "T0rZytWjRO2KygHoa_1EKA",
+          "source": "tableDataUpdateOMHmaanQSFDFpsc-BIWUa",
+          "target": "processBranch9ViGl4vrPZ8LCQOjAWCZD"
         },
         {
-          "name": "approves6xg67HPjJe8KC9RTtDSW",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranchmD7bwJ_bNq2gs6uGHCIQu",
-              "web.pipelineNode/branchTargetElementID": "processBranchTargetjWkWskQpeHJmEJhPWxN1E",
-              "web.pipelineNode/name": "负责人处理"
-            }
-          },
-          "spec": {
-            "type": "approve",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "flowID",
-                "value": "0XVExfDNSYGr30MATwykww"
-              },
-              {
-                "key": "nodeDefKey",
-                "value": "approves6xg67HPjJe8KC9RTtDSW"
-              },
-              {
-                "key": "flowCreatedBy",
-                "value": "600972366"
-              },
-              {
-                "key": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
-                "value": "$(communal.flowVar_1yzosVNyQb6w5NvER2C7Nw)"
-              },
-              {
-                "key": "flowVar_EZ034Y82RgOAZtPef2KS2Q",
-                "value": "$(communal.flowVar_EZ034Y82RgOAZtPef2KS2Q)"
-              },
-              {
-                "key": "flowVar_HSyEPLI5R8GrndCQcbSK6Q",
-                "value": "$(communal.flowVar_HSyEPLI5R8GrndCQcbSK6Q)"
-              },
-              {
-                "key": "flowVar_NoRuSO9OQIKJ-av0pz4qaw",
-                "value": "$(communal.flowVar_NoRuSO9OQIKJ-av0pz4qaw)"
-              },
-              {
-                "key": "flowVar_r-Cv7b6kTbi76gHSI5UvgQ",
-                "value": "$(communal.flowVar_r-Cv7b6kTbi76gHSI5UvgQ)"
-              },
-              {
-                "key": "flowVar_RR6_IccHTMCJpozb86x9OA",
-                "value": "$(communal.flowVar_RR6_IccHTMCJpozb86x9OA)"
-              },
-              {
-                "key": "flowVar_T0rZytWjRO2KygHoa_1EKA",
-                "value": "$(communal.flowVar_T0rZytWjRO2KygHoa_1EKA)"
-              },
-              {
-                "key": "flowVar_XAS_EUwcSru7CeNK3g0ojA",
-                "value": "$(communal.flowVar_XAS_EUwcSru7CeNK3g0ojA)"
-              },
-              {
-                "key": "SYS_AUDIT_BOOL",
-                "value": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ"
-              },
-              {
-                "key": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ",
-                "value": "$(communal.flowVar_ydFk2VCGRwm-DDYNlC3fEQ)"
-              },
-              {
-                "key": "taskType",
-                "value": "or"
-              },
-              {
-                "key": "dealUsers",
-                "value": "field.field_DdxZGLdk"
-              },
-              {
-                "key": "nodeInfo",
-                "value": "{\"id\":\"approves6xg67HPjJe8KC9RTtDSW\",\"type\":\"approve\",\"data\":{\"nodeData\":{\"name\":\"负责人处理\",\"parentID\":[\"approvenuZZVmHy0eP2KrqzjdzYo\"],\"childrenID\":[\"processBranchTargetjWkWskQpeHJmEJhPWxN1E\"],\"branchTargetElementID\":\"processBranchTargetjWkWskQpeHJmEJhPWxN1E\",\"branchID\":\"processBranchmD7bwJ_bNq2gs6uGHCIQu\"},\"businessData\":{\"basicConfig\":{\"approvePersons\":{\"type\":\"field\",\"users\":[],\"departments\":[],\"fields\":[\"field_DdxZGLdk\"]},\"multiplePersonWay\":\"or\",\"whenNoPerson\":\"transferAdmin\",\"autoRules\":[],\"timeRule\":{\"enabled\":false,\"deadLine\":{\"breakPoint\":\"\",\"day\":0,\"hours\":0,\"minutes\":0,\"urge\":{\"day\":0,\"hours\":0,\"minutes\":0,\"repeat\":{\"day\":0,\"hours\":0,\"minutes\":0}}},\"whenTimeout\":{\"type\":\"\",\"value\":\"\"}}},\"fieldPermission\":{\"field_4vDDUNMJ\":{\"fieldName\":\"标题\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"subtable_field_eNLTRUNf\":{\"fieldName\":\"负责人\",\"x-internal\":{\"permission\":3},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_Yi8ld5Q7\":{\"fieldName\":\"编号\",\"x-internal\":{\"permission\":3},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"subtable_field_oPUVzzg4\":{\"fieldName\":\"处理内容\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_7D5byNDw\":{\"fieldName\":\"工单状态\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"subtable_field_vHFrB0WV\":{\"fieldName\":\"处理进度\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_Pi2D4YiN\":{\"fieldName\":\"工单类型\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"subtable_field_xSrnPgp1\":{\"fieldName\":\"处理日期\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_SJAmVSBO\":{\"fieldName\":\"IT系统\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"subtable_field_8LctdXJE\":{\"fieldName\":\"耗时\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_AUygiiF5\":{\"fieldName\":\"IT部门负责人\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_gQquFvnF\":{\"fieldName\":\"优先级\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_DdxZGLdk\":{\"fieldName\":\"负责人\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_gwK1bqTZ\":{\"fieldName\":\"工单转需求\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_Uv4bRPeS\":{\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_HMg3sCkb\":{\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_7L2JROHp\":{\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_fU5g8ZDV\":{\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_NTas6SBo\":{\"fieldName\":\"附件上传\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_q9DKMcEV\":{\"fieldName\":\"图片上传\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_8z1NEkul\":{\"fieldName\":\"驳回理由\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_enSrh0Kv\":{\"fieldName\":\"理由/问题描述\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_Tt9Qs3si\":{\"fieldName\":\"问题信息\",\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_WlvApknS\":{\"fieldName\":\"呈报人\",\"x-internal\":{\"permission\":3},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_id46h2nr\":{\"fieldName\":\"呈报人所在部门\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_7hkBF8Pf\":{\"fieldName\":\"呈报人一级部门VP\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_BREQxBAv\":{\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_2VIQN05W\":{\"fieldName\":\"项目/空间名称\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_fD1juj3I\":{\"fieldName\":\"项目/控件管理员\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_8whGMF94\":{\"fieldName\":\"wiki空间权限\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_YA7nwaAC\":{\"fieldName\":\"wiki空间类型\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_vYkx86Np\":{\"fieldName\":\"Jira项目类型\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_9OMnHgfP\":{\"fieldName\":\"邮箱名称\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_jq2XyCAI\":{\"fieldName\":\"邮箱类型\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_Iml70z1w\":{\"fieldName\":\"包含部门/人员\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_5fWi4qzX\":{\"fieldName\":\"呈报人信息\",\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_Vk7VA38w\":{\"fieldName\":\"处理进度\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"_id\":{\"fieldName\":\"id\",\"x-internal\":{\"permission\":0}},\"created_at\":{\"fieldName\":\"创建时间\",\"x-internal\":{\"permission\":0}},\"updated_at\":{\"fieldName\":\"修改时间\",\"x-internal\":{\"permission\":0}},\"creator_name\":{\"fieldName\":\"创建者\",\"x-internal\":{\"permission\":0}},\"creator_id\":{\"fieldName\":\"创建者 ID\",\"x-internal\":{\"permission\":0}},\"modifier_name\":{\"fieldName\":\"修改者\",\"x-internal\":{\"permission\":0}},\"modifier_id\":{\"fieldName\":\"修改者 ID\",\"x-internal\":{\"permission\":0}}},\"operatorPermission\":{\"system\":[{\"enabled\":true,\"changeable\":false,\"name\":\"通过\",\"text\":\"通过\",\"value\":\"AGREE\",\"only\":\"approve\",\"reasonRequired\":false},{\"enabled\":true,\"changeable\":false,\"name\":\"拒绝\",\"text\":\"拒绝\",\"value\":\"REFUSE\",\"only\":\"approve\",\"reasonRequired\":true}]},\"subFieldPermission\":{}}}}"
-              },
-              {
-                "key": "subFieldPermission",
-                "value": "{}"
-              }
-            ],
-            "outPut": ["agree"],
-            "when": [
-              {
-                "input": "$(task.processBranchmD7bwJ_bNq2gs6uGHCIQu.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
+          "id": "afasd",
+          "source": "processBranch9ViGl4vrPZ8LCQOjAWCZD",
+          "target": "processBranchmD7bwJ_bNq2gs6uGHCIQu"
         },
         {
-          "name": "approveiFatWoiJMildUwkw0gWpm",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranchMBTkGrBJRSF_Ihs8I_Rau",
-              "web.pipelineNode/branchTargetElementID": "processBranchTargetjWkWskQpeHJmEJhPWxN1E",
-              "web.pipelineNode/name": "一级部门领导审批"
-            }
-          },
-          "spec": {
-            "type": "approve",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "flowID",
-                "value": "0XVExfDNSYGr30MATwykww"
-              },
-              {
-                "key": "nodeDefKey",
-                "value": "approveiFatWoiJMildUwkw0gWpm"
-              },
-              {
-                "key": "flowCreatedBy",
-                "value": "600972366"
-              },
-              {
-                "key": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
-                "value": "$(communal.flowVar_1yzosVNyQb6w5NvER2C7Nw)"
-              },
-              {
-                "key": "flowVar_EZ034Y82RgOAZtPef2KS2Q",
-                "value": "$(communal.flowVar_EZ034Y82RgOAZtPef2KS2Q)"
-              },
-              {
-                "key": "flowVar_HSyEPLI5R8GrndCQcbSK6Q",
-                "value": "$(communal.flowVar_HSyEPLI5R8GrndCQcbSK6Q)"
-              },
-              {
-                "key": "flowVar_NoRuSO9OQIKJ-av0pz4qaw",
-                "value": "$(communal.flowVar_NoRuSO9OQIKJ-av0pz4qaw)"
-              },
-              {
-                "key": "flowVar_r-Cv7b6kTbi76gHSI5UvgQ",
-                "value": "$(communal.flowVar_r-Cv7b6kTbi76gHSI5UvgQ)"
-              },
-              {
-                "key": "flowVar_RR6_IccHTMCJpozb86x9OA",
-                "value": "$(communal.flowVar_RR6_IccHTMCJpozb86x9OA)"
-              },
-              {
-                "key": "flowVar_T0rZytWjRO2KygHoa_1EKA",
-                "value": "$(communal.flowVar_T0rZytWjRO2KygHoa_1EKA)"
-              },
-              {
-                "key": "flowVar_XAS_EUwcSru7CeNK3g0ojA",
-                "value": "$(communal.flowVar_XAS_EUwcSru7CeNK3g0ojA)"
-              },
-              {
-                "key": "SYS_AUDIT_BOOL",
-                "value": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ"
-              },
-              {
-                "key": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ",
-                "value": "$(communal.flowVar_ydFk2VCGRwm-DDYNlC3fEQ)"
-              },
-              {
-                "key": "taskType",
-                "value": "or"
-              },
-              {
-                "key": "dealUsers",
-                "value": "field.field_7hkBF8Pf"
-              },
-              {
-                "key": "nodeInfo",
-                "value": "{\"id\":\"approveiFatWoiJMildUwkw0gWpm\",\"type\":\"approve\",\"data\":{\"nodeData\":{\"name\":\"一级部门领导审批\",\"parentID\":[\"approve3KhlMELkPYrddSyxwA_cn\"],\"childrenID\":[\"approve_OuTmSUL2vdi_12EjJNm7\"],\"branchTargetElementID\":\"processBranchTargetjWkWskQpeHJmEJhPWxN1E\",\"branchID\":\"processBranchMBTkGrBJRSF_Ihs8I_Rau\"},\"businessData\":{\"basicConfig\":{\"approvePersons\":{\"departments\":[],\"fields\":[\"field_7hkBF8Pf\"],\"type\":\"field\",\"users\":[]},\"autoRules\":[],\"multiplePersonWay\":\"or\",\"timeRule\":{\"deadLine\":{\"breakPoint\":\"\",\"day\":0,\"hours\":0,\"minutes\":0,\"urge\":{\"day\":0,\"hours\":0,\"minutes\":0,\"repeat\":{\"day\":0,\"hours\":0,\"minutes\":0}}},\"enabled\":false,\"whenTimeout\":{\"type\":\"\",\"value\":\"\"}},\"whenNoPerson\":\"transferAdmin\"},\"fieldPermission\":{\"_id\":{\"fieldName\":\"id\",\"x-internal\":{\"permission\":0}},\"created_at\":{\"fieldName\":\"创建时间\",\"x-internal\":{\"permission\":0}},\"creator_id\":{\"fieldName\":\"创建者 ID\",\"x-internal\":{\"permission\":0}},\"creator_name\":{\"fieldName\":\"创建者\",\"x-internal\":{\"permission\":0}},\"field_2VIQN05W\":{\"fieldName\":\"项目/空间名称\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_4vDDUNMJ\":{\"fieldName\":\"标题\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_5fWi4qzX\":{\"fieldName\":\"呈报人信息\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_7D5byNDw\":{\"fieldName\":\"工单状态\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":3}},\"field_7hkBF8Pf\":{\"fieldName\":\"呈报人一级部门VP\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_8whGMF94\":{\"fieldName\":\"wiki空间权限\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_8z1NEkul\":{\"fieldName\":\"驳回理由\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_9OMnHgfP\":{\"fieldName\":\"邮箱名称\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_AUygiiF5\":{\"fieldName\":\"部门负责人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_BREQxBAv\":{\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_DdxZGLdk\":{\"fieldName\":\"负责人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_NTas6SBo\":{\"fieldName\":\"附件上传\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_Pi2D4YiN\":{\"fieldName\":\"工单类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_SJAmVSBO\":{\"fieldName\":\"IT系统\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_Tt9Qs3si\":{\"fieldName\":\"问题信息\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_Uv4bRPeS\":{\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":1}},\"field_Vk7VA38w\":{\"fieldName\":\"处理进度\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_WlvApknS\":{\"fieldName\":\"呈报人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_YA7nwaAC\":{\"fieldName\":\"wiki空间类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_Yi8ld5Q7\":{\"fieldName\":\"编号\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":3}},\"field_enSrh0Kv\":{\"fieldName\":\"理由/问题描述\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_gQquFvnF\":{\"fieldName\":\"优先级\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_id46h2nr\":{\"fieldName\":\"呈报人所在部门\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_jnOC1TI2\":{\"fieldName\":\"包含人员/部门\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_jq2XyCAI\":{\"fieldName\":\"邮箱类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_q9DKMcEV\":{\"fieldName\":\"图片上传\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"field_vYkx86Np\":{\"fieldName\":\"Jira项目类型\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"modifier_id\":{\"fieldName\":\"修改者 ID\",\"x-internal\":{\"permission\":0}},\"modifier_name\":{\"fieldName\":\"修改者\",\"x-internal\":{\"permission\":0}},\"subtable_field_eNLTRUNf\":{\"fieldName\":\"负责人\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"subtable_field_oPUVzzg4\":{\"fieldName\":\"处理内容\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"subtable_field_vHFrB0WV\":{\"fieldName\":\"处理进度\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"subtable_field_xSrnPgp1\":{\"fieldName\":\"处理日期\",\"initialValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"submitValue\":{\"staticValue\":\"\",\"variable\":\"\"},\"x-internal\":{\"permission\":11}},\"updated_at\":{\"fieldName\":\"修改时间\",\"x-internal\":{\"permission\":0}}},\"operatorPermission\":{\"system\":[{\"changeable\":false,\"enabled\":true,\"name\":\"通过\",\"only\":\"approve\",\"reasonRequired\":false,\"text\":\"通过\",\"value\":\"AGREE\"},{\"changeable\":false,\"enabled\":true,\"name\":\"拒绝\",\"only\":\"approve\",\"reasonRequired\":true,\"text\":\"拒绝\",\"value\":\"REFUSE\"}]},\"subFieldPermission\":{}}}}"
-              },
-              {
-                "key": "subFieldPermission",
-                "value": "{}"
-              }
-            ],
-            "outPut": ["agree"],
-            "when": [
-              {
-                "input": "$(task.processBranchMBTkGrBJRSF_Ihs8I_Rau.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
+          "id": "adakfljlk",
+          "source": "processBranch9ViGl4vrPZ8LCQOjAWCZD",
+          "target": "processBranch7PWhtgVZBvMJzd0vFZYGp"
         },
         {
-          "name": "processBranch3PBwhwFvD-NzrATMzNTY2",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranch9ViGl4vrPZ8LCQOjAWCZD",
-              "web.pipelineNode/branchTargetElementID": "processBranchTargetT4LMXjXIZnlD7_He1FH5W",
-              "web.pipelineNode/name": "筛选条件设置"
-            }
-          },
-          "spec": {
-            "type": "process-branch",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
-                "value": "$(communal.flowVar_1yzosVNyQb6w5NvER2C7Nw)"
-              },
-              {
-                "key": "flowVar_EZ034Y82RgOAZtPef2KS2Q",
-                "value": "$(communal.flowVar_EZ034Y82RgOAZtPef2KS2Q)"
-              },
-              {
-                "key": "flowVar_HSyEPLI5R8GrndCQcbSK6Q",
-                "value": "$(communal.flowVar_HSyEPLI5R8GrndCQcbSK6Q)"
-              },
-              {
-                "key": "flowVar_NoRuSO9OQIKJ-av0pz4qaw",
-                "value": "$(communal.flowVar_NoRuSO9OQIKJ-av0pz4qaw)"
-              },
-              {
-                "key": "flowVar_r-Cv7b6kTbi76gHSI5UvgQ",
-                "value": "$(communal.flowVar_r-Cv7b6kTbi76gHSI5UvgQ)"
-              },
-              {
-                "key": "flowVar_RR6_IccHTMCJpozb86x9OA",
-                "value": "$(communal.flowVar_RR6_IccHTMCJpozb86x9OA)"
-              },
-              {
-                "key": "flowVar_T0rZytWjRO2KygHoa_1EKA",
-                "value": "$(communal.flowVar_T0rZytWjRO2KygHoa_1EKA)"
-              },
-              {
-                "key": "flowVar_XAS_EUwcSru7CeNK3g0ojA",
-                "value": "$(communal.flowVar_XAS_EUwcSru7CeNK3g0ojA)"
-              },
-              {
-                "key": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ",
-                "value": "$(communal.flowVar_ydFk2VCGRwm-DDYNlC3fEQ)"
-              },
-              {
-                "key": "rule",
-                "value": "[$field_Pi2D4YiN] == \"JIRA项目\""
-              }
-            ],
-            "outPut": ["ok"],
-            "when": [
-              {
-                "input": "$(task.processBranch9ViGl4vrPZ8LCQOjAWCZD.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
+          "id": "adfadfa",
+          "source": "processBranch9ViGl4vrPZ8LCQOjAWCZD",
+          "target": "processBranchMBTkGrBJRSF_Ihs8I_Rau"
         },
         {
-          "name": "processBranchK7mE8c3nRLp9o4Mvuz5Ab",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranch9ViGl4vrPZ8LCQOjAWCZD",
-              "web.pipelineNode/branchTargetElementID": "processBranchTargetT4LMXjXIZnlD7_He1FH5W",
-              "web.pipelineNode/isElseBranch": "true",
-              "web.pipelineNode/name": "筛选条件设置"
-            }
-          },
-          "spec": {
-            "type": "process-branch",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
-                "value": "$(communal.flowVar_1yzosVNyQb6w5NvER2C7Nw)"
-              },
-              {
-                "key": "flowVar_EZ034Y82RgOAZtPef2KS2Q",
-                "value": "$(communal.flowVar_EZ034Y82RgOAZtPef2KS2Q)"
-              },
-              {
-                "key": "flowVar_HSyEPLI5R8GrndCQcbSK6Q",
-                "value": "$(communal.flowVar_HSyEPLI5R8GrndCQcbSK6Q)"
-              },
-              {
-                "key": "flowVar_NoRuSO9OQIKJ-av0pz4qaw",
-                "value": "$(communal.flowVar_NoRuSO9OQIKJ-av0pz4qaw)"
-              },
-              {
-                "key": "flowVar_r-Cv7b6kTbi76gHSI5UvgQ",
-                "value": "$(communal.flowVar_r-Cv7b6kTbi76gHSI5UvgQ)"
-              },
-              {
-                "key": "flowVar_RR6_IccHTMCJpozb86x9OA",
-                "value": "$(communal.flowVar_RR6_IccHTMCJpozb86x9OA)"
-              },
-              {
-                "key": "flowVar_T0rZytWjRO2KygHoa_1EKA",
-                "value": "$(communal.flowVar_T0rZytWjRO2KygHoa_1EKA)"
-              },
-              {
-                "key": "flowVar_XAS_EUwcSru7CeNK3g0ojA",
-                "value": "$(communal.flowVar_XAS_EUwcSru7CeNK3g0ojA)"
-              },
-              {
-                "key": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ",
-                "value": "$(communal.flowVar_ydFk2VCGRwm-DDYNlC3fEQ)"
-              },
-              {
-                "key": "processBranch3PBwhwFvD-NzrATMzNTY2",
-                "value": "$(task.processBranch3PBwhwFvD-NzrATMzNTY2.output.ok)"
-              },
-              {
-                "key": "rule",
-                "value": "[processBranch3PBwhwFvD-NzrATMzNTY2]==false"
-              }
-            ],
-            "outPut": ["ok"],
-            "when": [
-              {
-                "input": "$(task.processBranch9ViGl4vrPZ8LCQOjAWCZD.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
+          "id": "end1",
+          "source": "processBranchmD7bwJ_bNq2gs6uGHCIQu",
+          "target": "end"
         },
         {
-          "name": "approve_OuTmSUL2vdi_12EjJNm7",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranchMBTkGrBJRSF_Ihs8I_Rau",
-              "web.pipelineNode/branchTargetElementID": "processBranchTargetjWkWskQpeHJmEJhPWxN1E",
-              "web.pipelineNode/name": "审批"
-            }
-          },
-          "spec": {
-            "type": "approve",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "flowID",
-                "value": "0XVExfDNSYGr30MATwykww"
-              },
-              {
-                "key": "nodeDefKey",
-                "value": "approve_OuTmSUL2vdi_12EjJNm7"
-              },
-              {
-                "key": "flowCreatedBy",
-                "value": "600972366"
-              },
-              {
-                "key": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
-                "value": "$(communal.flowVar_1yzosVNyQb6w5NvER2C7Nw)"
-              },
-              {
-                "key": "flowVar_EZ034Y82RgOAZtPef2KS2Q",
-                "value": "$(communal.flowVar_EZ034Y82RgOAZtPef2KS2Q)"
-              },
-              {
-                "key": "flowVar_HSyEPLI5R8GrndCQcbSK6Q",
-                "value": "$(communal.flowVar_HSyEPLI5R8GrndCQcbSK6Q)"
-              },
-              {
-                "key": "flowVar_NoRuSO9OQIKJ-av0pz4qaw",
-                "value": "$(communal.flowVar_NoRuSO9OQIKJ-av0pz4qaw)"
-              },
-              {
-                "key": "flowVar_r-Cv7b6kTbi76gHSI5UvgQ",
-                "value": "$(communal.flowVar_r-Cv7b6kTbi76gHSI5UvgQ)"
-              },
-              {
-                "key": "flowVar_RR6_IccHTMCJpozb86x9OA",
-                "value": "$(communal.flowVar_RR6_IccHTMCJpozb86x9OA)"
-              },
-              {
-                "key": "flowVar_T0rZytWjRO2KygHoa_1EKA",
-                "value": "$(communal.flowVar_T0rZytWjRO2KygHoa_1EKA)"
-              },
-              {
-                "key": "flowVar_XAS_EUwcSru7CeNK3g0ojA",
-                "value": "$(communal.flowVar_XAS_EUwcSru7CeNK3g0ojA)"
-              },
-              {
-                "key": "SYS_AUDIT_BOOL",
-                "value": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ"
-              },
-              {
-                "key": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ",
-                "value": "$(communal.flowVar_ydFk2VCGRwm-DDYNlC3fEQ)"
-              },
-              {
-                "key": "taskType",
-                "value": "or"
-              },
-              {
-                "key": "dealUsers",
-                "value": "person.614888248"
-              },
-              {
-                "key": "nodeInfo",
-                "value": "{\"id\":\"approve_OuTmSUL2vdi_12EjJNm7\",\"type\":\"approve\",\"data\":{\"nodeData\":{\"name\":\"审批\",\"parentID\":[\"approveiFatWoiJMildUwkw0gWpm\"],\"childrenID\":[\"approvegTAnclkfc2sxpTkIicpAX\"],\"branchTargetElementID\":\"processBranchTargetjWkWskQpeHJmEJhPWxN1E\",\"branchID\":\"processBranchMBTkGrBJRSF_Ihs8I_Rau\"},\"businessData\":{\"basicConfig\":{\"approvePersons\":{\"type\":\"person\",\"users\":[{\"type\":1,\"ownerID\":\"614888248\",\"ownerName\":\"杨博\",\"phone\":\"\",\"email\":\"rickyang@yunify.com\",\"departmentName\":\"运营及组织发展部DOD\",\"createdAt\":-1,\"id\":\"614888248\",\"departmentID\":\"1980705\"}],\"departments\":[]},\"multiplePersonWay\":\"or\",\"whenNoPerson\":\"transferAdmin\",\"autoRules\":[],\"timeRule\":{\"enabled\":false,\"deadLine\":{\"breakPoint\":\"\",\"day\":0,\"hours\":0,\"minutes\":0,\"urge\":{\"day\":0,\"hours\":0,\"minutes\":0,\"repeat\":{\"day\":0,\"hours\":0,\"minutes\":0}}},\"whenTimeout\":{\"type\":\"\",\"value\":\"\"}}},\"fieldPermission\":{\"field_4vDDUNMJ\":{\"fieldName\":\"标题\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"subtable_field_eNLTRUNf\":{\"fieldName\":\"负责人\",\"x-internal\":{\"permission\":3},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_Yi8ld5Q7\":{\"fieldName\":\"编号\",\"x-internal\":{\"permission\":3},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"subtable_field_oPUVzzg4\":{\"fieldName\":\"处理内容\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_7D5byNDw\":{\"fieldName\":\"工单状态\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"subtable_field_vHFrB0WV\":{\"fieldName\":\"处理进度\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_Pi2D4YiN\":{\"fieldName\":\"工单类型\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"subtable_field_xSrnPgp1\":{\"fieldName\":\"处理日期\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_AUygiiF5\":{\"fieldName\":\"IT部门负责人\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"subtable_field_8LctdXJE\":{\"fieldName\":\"耗时\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_SJAmVSBO\":{\"fieldName\":\"IT系统\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_gQquFvnF\":{\"fieldName\":\"优先级\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_DdxZGLdk\":{\"fieldName\":\"负责人\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_gwK1bqTZ\":{\"fieldName\":\"工单转需求\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_Uv4bRPeS\":{\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_HMg3sCkb\":{\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_7L2JROHp\":{\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_fU5g8ZDV\":{\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_NTas6SBo\":{\"fieldName\":\"附件上传\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_q9DKMcEV\":{\"fieldName\":\"图片上传\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_8z1NEkul\":{\"fieldName\":\"驳回理由\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_enSrh0Kv\":{\"fieldName\":\"理由/问题描述\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_Tt9Qs3si\":{\"fieldName\":\"问题信息\",\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_WlvApknS\":{\"fieldName\":\"呈报人\",\"x-internal\":{\"permission\":3},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_id46h2nr\":{\"fieldName\":\"呈报人所在部门\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_7hkBF8Pf\":{\"fieldName\":\"呈报人一级部门领导\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_BREQxBAv\":{\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_2VIQN05W\":{\"fieldName\":\"项目/空间名称\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_fD1juj3I\":{\"fieldName\":\"项目/空间管理员\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_vYkx86Np\":{\"fieldName\":\"Jira项目类型\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_jq2XyCAI\":{\"fieldName\":\"邮箱类型\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_9OMnHgfP\":{\"fieldName\":\"邮箱名称\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_Iml70z1w\":{\"fieldName\":\"包含部门/人员\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_5fWi4qzX\":{\"fieldName\":\"呈报人信息\",\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_Vk7VA38w\":{\"fieldName\":\"处理进度\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"_id\":{\"fieldName\":\"id\",\"x-internal\":{\"permission\":0}},\"created_at\":{\"fieldName\":\"创建时间\",\"x-internal\":{\"permission\":0}},\"updated_at\":{\"fieldName\":\"修改时间\",\"x-internal\":{\"permission\":0}},\"creator_name\":{\"fieldName\":\"创建者\",\"x-internal\":{\"permission\":0}},\"creator_id\":{\"fieldName\":\"创建者 ID\",\"x-internal\":{\"permission\":0}},\"modifier_name\":{\"fieldName\":\"修改者\",\"x-internal\":{\"permission\":0}},\"modifier_id\":{\"fieldName\":\"修改者 ID\",\"x-internal\":{\"permission\":0}}},\"operatorPermission\":{\"system\":[{\"enabled\":true,\"changeable\":false,\"name\":\"通过\",\"text\":\"通过\",\"value\":\"AGREE\",\"only\":\"approve\",\"reasonRequired\":false},{\"enabled\":true,\"changeable\":false,\"name\":\"拒绝\",\"text\":\"拒绝\",\"value\":\"REFUSE\",\"only\":\"approve\",\"reasonRequired\":true}]},\"subFieldPermission\":{}}}}"
-              },
-              {
-                "key": "subFieldPermission",
-                "value": "{}"
-              }
-            ],
-            "outPut": ["agree"],
-            "when": [
-              {
-                "input": "$(task.processBranchMBTkGrBJRSF_Ihs8I_Rau.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
+          "id": "end2",
+          "source": "processBranch7PWhtgVZBvMJzd0vFZYGp",
+          "target": "end"
         },
         {
-          "name": "webhookuVROeiXCFXyOss0qzYZR1",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranch3PBwhwFvD-NzrATMzNTY2",
-              "web.pipelineNode/branchTargetElementID": "processBranchTargetT4LMXjXIZnlD7_He1FH5W",
-              "web.pipelineNode/name": "创建JIRA项目",
-              "web.pipelineNode/webhookType": "send"
-            }
-          },
-          "spec": {
-            "type": "web-hook",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "config",
-                "value": "{\"sendUrl\":\"http://atlassian-hooks/jira/space\",\"contentType\":\"application/json\",\"sendMethod\":\"POST\",\"editWay\":\"multiple\",\"inputs\":[{\"type\":\"string\",\"name\":\"\",\"data\":\"\",\"in\":\"header\",\"id\":\"OGKqXhvQpLJYOdOJ-6zeX\",\"fieldType\":\"\",\"fieldName\":\"\",\"tableID\":\"\"},{\"type\":\"direct_expr\",\"name\":\"name\",\"data\":\"$formDataNKTLsRlunhkPsqBI9ZT9o.field_2VIQN05W \",\"in\":\"body\",\"id\":\"NbKgLRf7BoOd_4saIa6U4\",\"fieldType\":\"Input\",\"fieldName\":\"field_2VIQN05W\",\"tableID\":\"\"},{\"type\":\"string\",\"name\":\"\",\"data\":\"\",\"in\":\"query\",\"id\":\"t0oOpYNEk5EvSgUYeeohd\",\"fieldType\":\"\",\"fieldName\":\"\",\"tableID\":\"\"},{\"type\":\"direct_expr\",\"in\":\"body\",\"name\":\"user\",\"data\":\"$formDataNKTLsRlunhkPsqBI9ZT9o.field_fD1juj3I \",\"id\":\"wSwaGq5hjAmWsyvGseE_z\",\"fieldType\":\"UserPicker\",\"fieldName\":\"field_fD1juj3I\",\"tableID\":\"\"},{\"type\":\"direct_expr\",\"in\":\"body\",\"name\":\"description\",\"data\":\"$formDataNKTLsRlunhkPsqBI9ZT9o.field_enSrh0Kv \",\"id\":\"qfU5L-7ZUM8AIrf4AmXHa\",\"fieldType\":\"Textarea\",\"fieldName\":\"field_enSrh0Kv\",\"tableID\":\"\"},{\"type\":\"string\",\"in\":\"body\",\"name\":\"\",\"data\":\"\",\"id\":\"lF-BVkiqcyd52qkYMNr9S\",\"fieldType\":\"\",\"fieldName\":\"\",\"tableID\":\"\"}]}"
-              }
-            ],
-            "when": [
-              {
-                "input": "$(task.processBranch3PBwhwFvD-NzrATMzNTY2.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
-        },
-        {
-          "name": "webhookSoYC55yuUrhOokkSR4XbX",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranchK7mE8c3nRLp9o4Mvuz5Ab",
-              "web.pipelineNode/branchTargetElementID": "processBranchTargetT4LMXjXIZnlD7_He1FH5W",
-              "web.pipelineNode/name": "创建WIKI空间",
-              "web.pipelineNode/webhookType": "send"
-            }
-          },
-          "spec": {
-            "type": "web-hook",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "config",
-                "value": "{\"sendUrl\":\"http://atlassian-hooks/wiki/space\",\"contentType\":\"application/json\",\"sendMethod\":\"POST\",\"editWay\":\"multiple\",\"inputs\":[{\"type\":\"string\",\"name\":\"\",\"data\":\"\",\"in\":\"header\",\"id\":\"5oBjhe4_aCYz_yiIzDm6J\",\"fieldType\":\"\",\"fieldName\":\"\",\"tableID\":\"\"},{\"type\":\"direct_expr\",\"name\":\"name\",\"data\":\"$formDataNKTLsRlunhkPsqBI9ZT9o.field_2VIQN05W \",\"in\":\"body\",\"id\":\"fEggRwhfySBW4u_wNvT4b\",\"fieldType\":\"Input\",\"fieldName\":\"field_2VIQN05W\",\"tableID\":\"\"},{\"type\":\"string\",\"name\":\"\",\"data\":\"\",\"in\":\"query\",\"id\":\"X0xVjkAxl8t6UnkDqEvce\",\"fieldType\":\"\",\"fieldName\":\"\",\"tableID\":\"\"},{\"type\":\"direct_expr\",\"in\":\"body\",\"name\":\"description\",\"data\":\"$formDataNKTLsRlunhkPsqBI9ZT9o.field_enSrh0Kv \",\"id\":\"D0xPJeVGvGk4VfaLjTD2u\",\"fieldType\":\"Textarea\",\"fieldName\":\"field_enSrh0Kv\",\"tableID\":\"\"},{\"type\":\"direct_expr\",\"in\":\"body\",\"name\":\"user\",\"data\":\"$formDataNKTLsRlunhkPsqBI9ZT9o.field_fD1juj3I \",\"id\":\"fbQlehRQUBYcIEhsTWTSu\",\"fieldType\":\"UserPicker\",\"fieldName\":\"field_fD1juj3I\",\"tableID\":\"\"},{\"type\":\"string\",\"in\":\"body\",\"name\":\"\",\"data\":\"\",\"id\":\"WuxmIfjz4zzwLr5QbbVjA\",\"fieldType\":\"\",\"fieldName\":\"\",\"tableID\":\"\"}]}"
-              }
-            ],
-            "when": [
-              {
-                "input": "$(task.processBranchK7mE8c3nRLp9o4Mvuz5Ab.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
-        },
-        {
-          "name": "approvegTAnclkfc2sxpTkIicpAX",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranchMBTkGrBJRSF_Ihs8I_Rau",
-              "web.pipelineNode/branchTargetElementID": "processBranchTargetjWkWskQpeHJmEJhPWxN1E",
-              "web.pipelineNode/name": "审批"
-            }
-          },
-          "spec": {
-            "type": "approve",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "flowID",
-                "value": "0XVExfDNSYGr30MATwykww"
-              },
-              {
-                "key": "nodeDefKey",
-                "value": "approvegTAnclkfc2sxpTkIicpAX"
-              },
-              {
-                "key": "flowCreatedBy",
-                "value": "600972366"
-              },
-              {
-                "key": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
-                "value": "$(communal.flowVar_1yzosVNyQb6w5NvER2C7Nw)"
-              },
-              {
-                "key": "flowVar_EZ034Y82RgOAZtPef2KS2Q",
-                "value": "$(communal.flowVar_EZ034Y82RgOAZtPef2KS2Q)"
-              },
-              {
-                "key": "flowVar_HSyEPLI5R8GrndCQcbSK6Q",
-                "value": "$(communal.flowVar_HSyEPLI5R8GrndCQcbSK6Q)"
-              },
-              {
-                "key": "flowVar_NoRuSO9OQIKJ-av0pz4qaw",
-                "value": "$(communal.flowVar_NoRuSO9OQIKJ-av0pz4qaw)"
-              },
-              {
-                "key": "flowVar_r-Cv7b6kTbi76gHSI5UvgQ",
-                "value": "$(communal.flowVar_r-Cv7b6kTbi76gHSI5UvgQ)"
-              },
-              {
-                "key": "flowVar_RR6_IccHTMCJpozb86x9OA",
-                "value": "$(communal.flowVar_RR6_IccHTMCJpozb86x9OA)"
-              },
-              {
-                "key": "flowVar_T0rZytWjRO2KygHoa_1EKA",
-                "value": "$(communal.flowVar_T0rZytWjRO2KygHoa_1EKA)"
-              },
-              {
-                "key": "flowVar_XAS_EUwcSru7CeNK3g0ojA",
-                "value": "$(communal.flowVar_XAS_EUwcSru7CeNK3g0ojA)"
-              },
-              {
-                "key": "SYS_AUDIT_BOOL",
-                "value": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ"
-              },
-              {
-                "key": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ",
-                "value": "$(communal.flowVar_ydFk2VCGRwm-DDYNlC3fEQ)"
-              },
-              {
-                "key": "taskType",
-                "value": "or"
-              },
-              {
-                "key": "dealUsers",
-                "value": "field.field_DdxZGLdk"
-              },
-              {
-                "key": "nodeInfo",
-                "value": "{\"id\":\"approvegTAnclkfc2sxpTkIicpAX\",\"type\":\"approve\",\"data\":{\"nodeData\":{\"name\":\"审批\",\"parentID\":[\"approve_OuTmSUL2vdi_12EjJNm7\"],\"childrenID\":[\"processBranchTargetjWkWskQpeHJmEJhPWxN1E\"],\"branchID\":\"processBranchMBTkGrBJRSF_Ihs8I_Rau\",\"branchTargetElementID\":\"processBranchTargetjWkWskQpeHJmEJhPWxN1E\"},\"businessData\":{\"basicConfig\":{\"approvePersons\":{\"type\":\"field\",\"users\":[],\"departments\":[],\"fields\":[\"field_DdxZGLdk\"]},\"multiplePersonWay\":\"or\",\"whenNoPerson\":\"transferAdmin\",\"autoRules\":[],\"timeRule\":{\"enabled\":false,\"deadLine\":{\"breakPoint\":\"\",\"day\":0,\"hours\":0,\"minutes\":0,\"urge\":{\"day\":0,\"hours\":0,\"minutes\":0,\"repeat\":{\"day\":0,\"hours\":0,\"minutes\":0}}},\"whenTimeout\":{\"type\":\"\",\"value\":\"\"}}},\"fieldPermission\":{\"field_4vDDUNMJ\":{\"fieldName\":\"标题\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"subtable_field_eNLTRUNf\":{\"fieldName\":\"负责人\",\"x-internal\":{\"permission\":3},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_Yi8ld5Q7\":{\"fieldName\":\"编号\",\"x-internal\":{\"permission\":3},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"subtable_field_oPUVzzg4\":{\"fieldName\":\"处理内容\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_7D5byNDw\":{\"fieldName\":\"工单状态\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"subtable_field_vHFrB0WV\":{\"fieldName\":\"处理进度\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_Pi2D4YiN\":{\"fieldName\":\"工单类型\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"subtable_field_xSrnPgp1\":{\"fieldName\":\"处理日期\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_AUygiiF5\":{\"fieldName\":\"IT部门负责人\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"subtable_field_8LctdXJE\":{\"fieldName\":\"耗时\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_SJAmVSBO\":{\"fieldName\":\"IT系统\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_gQquFvnF\":{\"fieldName\":\"优先级\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_DdxZGLdk\":{\"fieldName\":\"负责人\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_gwK1bqTZ\":{\"fieldName\":\"工单转需求\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_Uv4bRPeS\":{\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_HMg3sCkb\":{\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_7L2JROHp\":{\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_fU5g8ZDV\":{\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_NTas6SBo\":{\"fieldName\":\"附件上传\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_q9DKMcEV\":{\"fieldName\":\"图片上传\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_8z1NEkul\":{\"fieldName\":\"驳回理由\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_enSrh0Kv\":{\"fieldName\":\"理由/问题描述\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_Tt9Qs3si\":{\"fieldName\":\"问题信息\",\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_WlvApknS\":{\"fieldName\":\"呈报人\",\"x-internal\":{\"permission\":3},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_id46h2nr\":{\"fieldName\":\"呈报人所在部门\",\"x-internal\":{\"permission\":3},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_7hkBF8Pf\":{\"fieldName\":\"呈报人一级部门领导\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_BREQxBAv\":{\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_2VIQN05W\":{\"fieldName\":\"项目/空间名称\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_fD1juj3I\":{\"fieldName\":\"项目/空间管理员\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_vYkx86Np\":{\"fieldName\":\"Jira项目类型\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_jq2XyCAI\":{\"fieldName\":\"邮箱类型\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_9OMnHgfP\":{\"fieldName\":\"邮箱名称\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_Iml70z1w\":{\"fieldName\":\"包含部门/人员\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_5fWi4qzX\":{\"fieldName\":\"呈报人信息\",\"x-internal\":{\"permission\":1},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"field_Vk7VA38w\":{\"fieldName\":\"处理进度\",\"x-internal\":{\"permission\":11},\"initialValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"submitValue\":{\"variable\":\"\",\"staticValue\":\"\"},\"x-component-props\":{\"subTableAdd\":true,\"subTableDelete\":true}},\"_id\":{\"fieldName\":\"id\",\"x-internal\":{\"permission\":0}},\"created_at\":{\"fieldName\":\"创建时间\",\"x-internal\":{\"permission\":0}},\"updated_at\":{\"fieldName\":\"修改时间\",\"x-internal\":{\"permission\":0}},\"creator_name\":{\"fieldName\":\"创建者\",\"x-internal\":{\"permission\":0}},\"creator_id\":{\"fieldName\":\"创建者 ID\",\"x-internal\":{\"permission\":0}},\"modifier_name\":{\"fieldName\":\"修改者\",\"x-internal\":{\"permission\":0}},\"modifier_id\":{\"fieldName\":\"修改者 ID\",\"x-internal\":{\"permission\":0}}},\"operatorPermission\":{\"system\":[{\"enabled\":true,\"changeable\":false,\"name\":\"通过\",\"text\":\"通过\",\"value\":\"AGREE\",\"only\":\"approve\",\"reasonRequired\":false},{\"enabled\":true,\"changeable\":false,\"name\":\"拒绝\",\"text\":\"拒绝\",\"value\":\"REFUSE\",\"only\":\"approve\",\"reasonRequired\":true}]},\"subFieldPermission\":{}}}}"
-              },
-              {
-                "key": "subFieldPermission",
-                "value": "{}"
-              }
-            ],
-            "outPut": ["agree"],
-            "when": [
-              {
-                "input": "$(task.processBranchMBTkGrBJRSF_Ihs8I_Rau.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
-        },
-        {
-          "name": "tableDataCreate96OMNljVaVq0rGyJjBJbg",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranchK7mE8c3nRLp9o4Mvuz5Ab",
-              "web.pipelineNode/branchTargetElementID": "processBranchTargetT4LMXjXIZnlD7_He1FH5W",
-              "web.pipelineNode/name": "数据新增"
-            }
-          },
-          "spec": {
-            "type": "form-create-data",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "targetTableID",
-                "value": "lnlmr"
-              },
-              {
-                "key": "createRule",
-                "value": "{\"field_C9dKZVbG\":{\"valueFrom\":\"currentFormValue\",\"valueOf\":\"field_2VIQN05W\"},\"field_wuTC6Ud5\":{\"valueFrom\":\"fixedValue\",\"valueOf\":\"团队空间\"},\"field_OAq5faAE\":{\"valueFrom\":\"fixedValue\",\"valueOf\":\"私有\"},\"field_mkkxMsvG\":{\"valueFrom\":\"currentFormValue\",\"valueOf\":\"field_WlvApknS\"},\"field_YqBMPcJA\":{\"valueFrom\":\"currentFormValue\",\"valueOf\":\"field_id46h2nr\"},\"field_KVpqHiv8\":{\"valueFrom\":\"currentFormValue\",\"valueOf\":\"field_enSrh0Kv\"},\"field_osmRWbDm\":{\"valueFrom\":\"fixedValue\",\"valueOf\":\"可用\"}}"
-              }
-            ],
-            "when": [
-              {
-                "input": "$(task.processBranchK7mE8c3nRLp9o4Mvuz5Ab.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
-        },
-        {
-          "name": "processBranchPSDFNaxUE2oK5rMuDszr-",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchTargetElementID": "processBranchTarget5QoWV1leGF5OH8x9TqKki",
-              "web.pipelineNode/name": "审批拒绝"
-            }
-          },
-          "spec": {
-            "type": "process-branch",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
-                "value": "$(communal.flowVar_1yzosVNyQb6w5NvER2C7Nw)"
-              },
-              {
-                "key": "flowVar_EZ034Y82RgOAZtPef2KS2Q",
-                "value": "$(communal.flowVar_EZ034Y82RgOAZtPef2KS2Q)"
-              },
-              {
-                "key": "flowVar_HSyEPLI5R8GrndCQcbSK6Q",
-                "value": "$(communal.flowVar_HSyEPLI5R8GrndCQcbSK6Q)"
-              },
-              {
-                "key": "flowVar_NoRuSO9OQIKJ-av0pz4qaw",
-                "value": "$(communal.flowVar_NoRuSO9OQIKJ-av0pz4qaw)"
-              },
-              {
-                "key": "flowVar_r-Cv7b6kTbi76gHSI5UvgQ",
-                "value": "$(communal.flowVar_r-Cv7b6kTbi76gHSI5UvgQ)"
-              },
-              {
-                "key": "flowVar_RR6_IccHTMCJpozb86x9OA",
-                "value": "$(communal.flowVar_RR6_IccHTMCJpozb86x9OA)"
-              },
-              {
-                "key": "flowVar_T0rZytWjRO2KygHoa_1EKA",
-                "value": "$(communal.flowVar_T0rZytWjRO2KygHoa_1EKA)"
-              },
-              {
-                "key": "flowVar_XAS_EUwcSru7CeNK3g0ojA",
-                "value": "$(communal.flowVar_XAS_EUwcSru7CeNK3g0ojA)"
-              },
-              {
-                "key": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ",
-                "value": "$(communal.flowVar_ydFk2VCGRwm-DDYNlC3fEQ)"
-              },
-              {
-                "key": "rule",
-                "value": "[$flowVar_ydFk2VCGRwm-DDYNlC3fEQ] == false"
-              }
-            ],
-            "outPut": ["ok"]
-          }
-        },
-        {
-          "name": "processBranchoWK9neJsBkKo_ReycZXEu",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchTargetElementID": "processBranchTarget5QoWV1leGF5OH8x9TqKki",
-              "web.pipelineNode/name": "审批通过"
-            }
-          },
-          "spec": {
-            "type": "process-branch",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
-                "value": "$(communal.flowVar_1yzosVNyQb6w5NvER2C7Nw)"
-              },
-              {
-                "key": "flowVar_EZ034Y82RgOAZtPef2KS2Q",
-                "value": "$(communal.flowVar_EZ034Y82RgOAZtPef2KS2Q)"
-              },
-              {
-                "key": "flowVar_HSyEPLI5R8GrndCQcbSK6Q",
-                "value": "$(communal.flowVar_HSyEPLI5R8GrndCQcbSK6Q)"
-              },
-              {
-                "key": "flowVar_NoRuSO9OQIKJ-av0pz4qaw",
-                "value": "$(communal.flowVar_NoRuSO9OQIKJ-av0pz4qaw)"
-              },
-              {
-                "key": "flowVar_r-Cv7b6kTbi76gHSI5UvgQ",
-                "value": "$(communal.flowVar_r-Cv7b6kTbi76gHSI5UvgQ)"
-              },
-              {
-                "key": "flowVar_RR6_IccHTMCJpozb86x9OA",
-                "value": "$(communal.flowVar_RR6_IccHTMCJpozb86x9OA)"
-              },
-              {
-                "key": "flowVar_T0rZytWjRO2KygHoa_1EKA",
-                "value": "$(communal.flowVar_T0rZytWjRO2KygHoa_1EKA)"
-              },
-              {
-                "key": "flowVar_XAS_EUwcSru7CeNK3g0ojA",
-                "value": "$(communal.flowVar_XAS_EUwcSru7CeNK3g0ojA)"
-              },
-              {
-                "key": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ",
-                "value": "$(communal.flowVar_ydFk2VCGRwm-DDYNlC3fEQ)"
-              },
-              {
-                "key": "rule",
-                "value": "[$flowVar_ydFk2VCGRwm-DDYNlC3fEQ] == true"
-              }
-            ],
-            "outPut": ["ok"]
-          }
-        },
-        {
-          "name": "emailbZaDGFSdX1-Xozumdd70s",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranchPSDFNaxUE2oK5rMuDszr-",
-              "web.pipelineNode/branchTargetElementID": "processBranchTarget5QoWV1leGF5OH8x9TqKki",
-              "web.pipelineNode/name": "发送邮件"
-            }
-          },
-          "spec": {
-            "type": "email",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "title",
-                "value": "您的IT工单不能被处理了"
-              },
-              {
-                "key": "content",
-                "value": "<div class=\"ql-editor\" data-gramm=\"false\" contenteditable=\"true\"><p>您好，</p><p><br></p><p>很抱歉的告诉您，您的IT工单标题为：【${field_4vDDUNMJ} 】，我们没法给您处理，具体原因的可以通过<strong>“工作台---》我发起的”</strong>中查看不被处理的原因。</p><p> </p></div>"
-              },
-              {
-                "key": "to",
-                "value": "fields.field_WlvApknS"
-              }
-            ],
-            "when": [
-              {
-                "input": "$(task.processBranchPSDFNaxUE2oK5rMuDszr-.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
-        },
-        {
-          "name": "tableDataUpdate5PFjzb-NoKMFDvOyd2TLx",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranchPSDFNaxUE2oK5rMuDszr-",
-              "web.pipelineNode/branchTargetElementID": "processBranchTarget5QoWV1leGF5OH8x9TqKki",
-              "web.pipelineNode/name": "更新状态为拒绝",
-              "web.pipelineNode/updateFormType": "work-form"
-            }
-          },
-          "spec": {
-            "type": "form-update-data",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "targetTableID",
-                "value": "889h8"
-              },
-              {
-                "key": "updateRule",
-                "value": "[{\"fieldName\":\"field_7D5byNDw\",\"valueFrom\":\"fixedValue\",\"valueOf\":\"已驳回\"}]"
-              },
-              {
-                "key": "filterRule",
-                "value": "{\"conditions\":[]}"
-              }
-            ],
-            "when": [
-              {
-                "input": "$(task.processBranchPSDFNaxUE2oK5rMuDszr-.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
-        },
-        {
-          "name": "processBranchVxJ0y0C6EiSZxVldd5Nim",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranchoWK9neJsBkKo_ReycZXEu",
-              "web.pipelineNode/branchTargetElementID": "processBranchTarget9uMOJR9xetyScE7ItyyfG",
-              "web.pipelineNode/name": "不转需求"
-            }
-          },
-          "spec": {
-            "type": "process-branch",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
-                "value": "$(communal.flowVar_1yzosVNyQb6w5NvER2C7Nw)"
-              },
-              {
-                "key": "flowVar_EZ034Y82RgOAZtPef2KS2Q",
-                "value": "$(communal.flowVar_EZ034Y82RgOAZtPef2KS2Q)"
-              },
-              {
-                "key": "flowVar_HSyEPLI5R8GrndCQcbSK6Q",
-                "value": "$(communal.flowVar_HSyEPLI5R8GrndCQcbSK6Q)"
-              },
-              {
-                "key": "flowVar_NoRuSO9OQIKJ-av0pz4qaw",
-                "value": "$(communal.flowVar_NoRuSO9OQIKJ-av0pz4qaw)"
-              },
-              {
-                "key": "flowVar_r-Cv7b6kTbi76gHSI5UvgQ",
-                "value": "$(communal.flowVar_r-Cv7b6kTbi76gHSI5UvgQ)"
-              },
-              {
-                "key": "flowVar_RR6_IccHTMCJpozb86x9OA",
-                "value": "$(communal.flowVar_RR6_IccHTMCJpozb86x9OA)"
-              },
-              {
-                "key": "flowVar_T0rZytWjRO2KygHoa_1EKA",
-                "value": "$(communal.flowVar_T0rZytWjRO2KygHoa_1EKA)"
-              },
-              {
-                "key": "flowVar_XAS_EUwcSru7CeNK3g0ojA",
-                "value": "$(communal.flowVar_XAS_EUwcSru7CeNK3g0ojA)"
-              },
-              {
-                "key": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ",
-                "value": "$(communal.flowVar_ydFk2VCGRwm-DDYNlC3fEQ)"
-              },
-              {
-                "key": "rule",
-                "value": "[$field_gwK1bqTZ] == \"否\""
-              }
-            ],
-            "outPut": ["ok"],
-            "when": [
-              {
-                "input": "$(task.processBranchoWK9neJsBkKo_ReycZXEu.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
-        },
-        {
-          "name": "processBranchxt4iWLBnMKCKae87IzIqP",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranchoWK9neJsBkKo_ReycZXEu",
-              "web.pipelineNode/branchTargetElementID": "processBranchTarget9uMOJR9xetyScE7ItyyfG",
-              "web.pipelineNode/name": "转需求"
-            }
-          },
-          "spec": {
-            "type": "process-branch",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
-                "value": "$(communal.flowVar_1yzosVNyQb6w5NvER2C7Nw)"
-              },
-              {
-                "key": "flowVar_EZ034Y82RgOAZtPef2KS2Q",
-                "value": "$(communal.flowVar_EZ034Y82RgOAZtPef2KS2Q)"
-              },
-              {
-                "key": "flowVar_HSyEPLI5R8GrndCQcbSK6Q",
-                "value": "$(communal.flowVar_HSyEPLI5R8GrndCQcbSK6Q)"
-              },
-              {
-                "key": "flowVar_NoRuSO9OQIKJ-av0pz4qaw",
-                "value": "$(communal.flowVar_NoRuSO9OQIKJ-av0pz4qaw)"
-              },
-              {
-                "key": "flowVar_r-Cv7b6kTbi76gHSI5UvgQ",
-                "value": "$(communal.flowVar_r-Cv7b6kTbi76gHSI5UvgQ)"
-              },
-              {
-                "key": "flowVar_RR6_IccHTMCJpozb86x9OA",
-                "value": "$(communal.flowVar_RR6_IccHTMCJpozb86x9OA)"
-              },
-              {
-                "key": "flowVar_T0rZytWjRO2KygHoa_1EKA",
-                "value": "$(communal.flowVar_T0rZytWjRO2KygHoa_1EKA)"
-              },
-              {
-                "key": "flowVar_XAS_EUwcSru7CeNK3g0ojA",
-                "value": "$(communal.flowVar_XAS_EUwcSru7CeNK3g0ojA)"
-              },
-              {
-                "key": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ",
-                "value": "$(communal.flowVar_ydFk2VCGRwm-DDYNlC3fEQ)"
-              },
-              {
-                "key": "rule",
-                "value": "[$field_gwK1bqTZ] == \"是\""
-              }
-            ],
-            "outPut": ["ok"],
-            "when": [
-              {
-                "input": "$(task.processBranchoWK9neJsBkKo_ReycZXEu.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
-        },
-        {
-          "name": "webhookUoAK0QJ1r9fjexTXAudAv",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranchxt4iWLBnMKCKae87IzIqP",
-              "web.pipelineNode/branchTargetElementID": "processBranchTarget9uMOJR9xetyScE7ItyyfG",
-              "web.pipelineNode/name": "创建JIRA任务",
-              "web.pipelineNode/webhookType": "send"
-            }
-          },
-          "spec": {
-            "type": "web-hook",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "config",
-                "value": "{\"sendUrl\":\"http://atlassian-hooks/jira/issue\",\"contentType\":\"application/json\",\"sendMethod\":\"POST\",\"editWay\":\"multiple\",\"inputs\":[{\"type\":\"string\",\"name\":\"\",\"data\":\"\",\"in\":\"header\",\"id\":\"imO8Hgq8KU7qVegHzMqqu\",\"fieldType\":\"\",\"fieldName\":\"\",\"tableID\":\"\"},{\"type\":\"direct_expr\",\"name\":\"name\",\"data\":\"$formDataNKTLsRlunhkPsqBI9ZT9o.field_4vDDUNMJ \",\"in\":\"body\",\"id\":\"ahbv7lZGXPq3nchVaTLok\",\"fieldType\":\"Input\",\"fieldName\":\"field_4vDDUNMJ\",\"tableID\":\"\"},{\"type\":\"string\",\"name\":\"\",\"data\":\"\",\"in\":\"query\",\"id\":\"p0wLJB5en5FLxORANIiJf\",\"fieldType\":\"\",\"fieldName\":\"\",\"tableID\":\"\"},{\"type\":\"direct_expr\",\"in\":\"body\",\"name\":\"description\",\"data\":\"$formDataNKTLsRlunhkPsqBI9ZT9o.field_enSrh0Kv \",\"id\":\"Ywt8kE0ghRViMc2ykSV0N\",\"fieldType\":\"Textarea\",\"fieldName\":\"field_enSrh0Kv\",\"tableID\":\"\"},{\"type\":\"direct_expr\",\"in\":\"body\",\"name\":\"user\",\"data\":\"$formDataNKTLsRlunhkPsqBI9ZT9o.field_WlvApknS \",\"id\":\"SPZxKugFc-BrwKarZtW9G\",\"fieldType\":\"UserPicker\",\"fieldName\":\"field_WlvApknS\",\"tableID\":\"\"},{\"type\":\"direct_expr\",\"in\":\"body\",\"name\":\"priority\",\"data\":\"$formDataNKTLsRlunhkPsqBI9ZT9o.field_gQquFvnF \",\"id\":\"OumdQQz0nDeXnk-I3qEWf\",\"fieldType\":\"Select\",\"fieldName\":\"field_gQquFvnF\",\"tableID\":\"\"},{\"type\":\"string\",\"in\":\"body\",\"name\":\"\",\"data\":\"\",\"id\":\"1MyNGRgZH1bWRKcShluE4\",\"fieldType\":\"\",\"fieldName\":\"\",\"tableID\":\"\"}]}"
-              }
-            ],
-            "when": [
-              {
-                "input": "$(task.processBranchxt4iWLBnMKCKae87IzIqP.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
-        },
-        {
-          "name": "emailzExc2UxPHrwdEXwzBG8gV",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranchoWK9neJsBkKo_ReycZXEu",
-              "web.pipelineNode/branchTargetElementID": "processBranchTarget5QoWV1leGF5OH8x9TqKki",
-              "web.pipelineNode/name": "发送通过邮件"
-            }
-          },
-          "spec": {
-            "type": "email",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "title",
-                "value": "您的IT工单已经处理完成"
-              },
-              {
-                "key": "content",
-                "value": "<div class=\"ql-editor\" data-gramm=\"false\" contenteditable=\"true\"><p>您好，</p><p>您提交的IT工单标题为：【${field_4vDDUNMJ} 】已经处理完成了。</p><p><br></p><p>您的IT工单是否转为需求：【 ${field_gwK1bqTZ} 】,如果工单已经转为需求，我们会根据排期进行开发。多谢您的理解与支持</p><p><br></p><p>     </p><p><br></p><p><br></p><p>                                                                                                                     数字化技术部</p><p> </p></div>"
-              },
-              {
-                "key": "to",
-                "value": "fields.field_WlvApknS"
-              }
-            ],
-            "when": [
-              {
-                "input": "$(task.processBranchoWK9neJsBkKo_ReycZXEu.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
-        },
-        {
-          "name": "tableDataUpdate8b1OzwoeSSyCxQ0qRPnO2",
-          "Metadata": {
-            "Annotations": {
-              "web.pipelineNode/branchID": "processBranchoWK9neJsBkKo_ReycZXEu",
-              "web.pipelineNode/branchTargetElementID": "processBranchTarget5QoWV1leGF5OH8x9TqKki",
-              "web.pipelineNode/name": "更新状态到已处理",
-              "web.pipelineNode/updateFormType": "work-form"
-            }
-          },
-          "spec": {
-            "type": "form-update-data",
-            "params": [
-              {
-                "key": "appID",
-                "value": "$(params.appID)"
-              },
-              {
-                "key": "tableID",
-                "value": "$(params.tableID)"
-              },
-              {
-                "key": "dataID",
-                "value": "$(params.dataID)"
-              },
-              {
-                "key": "targetTableID",
-                "value": "889h8"
-              },
-              {
-                "key": "updateRule",
-                "value": "[{\"fieldName\":\"field_7D5byNDw\",\"valueFrom\":\"fixedValue\",\"valueOf\":\"已处理\"}]"
-              },
-              {
-                "key": "filterRule",
-                "value": "{\"conditions\":[]}"
-              }
-            ],
-            "when": [
-              {
-                "input": "$(task.processBranchoWK9neJsBkKo_ReycZXEu.output.ok)",
-                "operator": "eq",
-                "values": ["true"]
-              }
-            ]
-          }
+          "id": "end3",
+          "source": "processBranchMBTkGrBJRSF_Ihs8I_Rau",
+          "target": "end"
         }
       ],
       "communal": [
         {
           "name": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
-          "default": "false",
+          "default": false,
           "description": "系统初始化变量，不可修改"
         },
         {
           "name": "flowVar_EZ034Y82RgOAZtPef2KS2Q",
-          "default": "false",
+          "default": false,
           "description": "系统初始化变量，不可修改"
         },
         {
           "name": "flowVar_HSyEPLI5R8GrndCQcbSK6Q",
-          "default": "false",
+          "default": false,
           "description": "系统初始化变量，不可修改"
         },
         {
           "name": "flowVar_NoRuSO9OQIKJ-av0pz4qaw",
-          "default": "false",
+          "default": false,
           "description": "系统初始化变量，不可修改"
         },
         {
           "name": "flowVar_r-Cv7b6kTbi76gHSI5UvgQ",
-          "default": "false",
+          "default": false,
           "description": "系统初始化变量，不可修改"
         },
         {
           "name": "flowVar_RR6_IccHTMCJpozb86x9OA",
-          "default": "false",
+          "default": false,
           "description": "系统初始化变量，不可修改"
         },
         {
           "name": "flowVar_T0rZytWjRO2KygHoa_1EKA",
-          "default": "false",
+          "default": false,
           "description": "系统初始化变量，不可修改"
         },
         {
           "name": "flowVar_XAS_EUwcSru7CeNK3g0ojA",
-          "default": "false",
+          "default": false,
           "description": "系统初始化变量，不可修改"
         },
         {
           "name": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ",
-          "default": "True",
+          "default": true,
           "description": "系统初始化变量，不可修改"
         }
       ]
@@ -2140,7 +661,7 @@
     "variable": [
       {
         "code": "flowVar_1yzosVNyQb6w5NvER2C7Nw",
-        "defaultValue": "false",
+        "defaultValue": false,
         "desc": "系统初始化变量，不可修改",
         "fieldType": "boolean",
         "id": "1yzosVNyQb6w5NvER2C7Nw",
@@ -2149,7 +670,7 @@
       },
       {
         "code": "flowVar_EZ034Y82RgOAZtPef2KS2Q",
-        "defaultValue": "false",
+        "defaultValue": false,
         "desc": "系统初始化变量，不可修改",
         "fieldType": "boolean",
         "id": "EZ034Y82RgOAZtPef2KS2Q",
@@ -2158,7 +679,7 @@
       },
       {
         "code": "flowVar_HSyEPLI5R8GrndCQcbSK6Q",
-        "defaultValue": "false",
+        "defaultValue": false,
         "desc": "系统初始化变量，不可修改",
         "fieldType": "boolean",
         "id": "HSyEPLI5R8GrndCQcbSK6Q",
@@ -2167,7 +688,7 @@
       },
       {
         "code": "flowVar_NoRuSO9OQIKJ-av0pz4qaw",
-        "defaultValue": "false",
+        "defaultValue": false,
         "desc": "系统初始化变量，不可修改",
         "fieldType": "boolean",
         "id": "NoRuSO9OQIKJ-av0pz4qaw",
@@ -2176,7 +697,7 @@
       },
       {
         "code": "flowVar_r-Cv7b6kTbi76gHSI5UvgQ",
-        "defaultValue": "false",
+        "defaultValue": false,
         "desc": "系统初始化变量，不可修改",
         "fieldType": "boolean",
         "id": "r-Cv7b6kTbi76gHSI5UvgQ",
@@ -2185,7 +706,7 @@
       },
       {
         "code": "flowVar_RR6_IccHTMCJpozb86x9OA",
-        "defaultValue": "false",
+        "defaultValue": false,
         "desc": "系统初始化变量，不可修改",
         "fieldType": "boolean",
         "id": "RR6_IccHTMCJpozb86x9OA",
@@ -2194,7 +715,7 @@
       },
       {
         "code": "flowVar_T0rZytWjRO2KygHoa_1EKA",
-        "defaultValue": "false",
+        "defaultValue": false,
         "desc": "系统初始化变量，不可修改",
         "fieldType": "boolean",
         "id": "T0rZytWjRO2KygHoa_1EKA",
@@ -2203,7 +724,7 @@
       },
       {
         "code": "flowVar_XAS_EUwcSru7CeNK3g0ojA",
-        "defaultValue": "false",
+        "defaultValue": false,
         "desc": "系统初始化变量，不可修改",
         "fieldType": "boolean",
         "id": "XAS_EUwcSru7CeNK3g0ojA",
@@ -2212,7 +733,7 @@
       },
       {
         "code": "flowVar_ydFk2VCGRwm-DDYNlC3fEQ",
-        "defaultValue": "True",
+        "defaultValue": true,
         "desc": "系统初始化变量，不可修改",
         "fieldType": "boolean",
         "id": "ydFk2VCGRwm-DDYNlC3fEQ",

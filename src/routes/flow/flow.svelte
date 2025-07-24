@@ -17,6 +17,10 @@
     import StartNode from "./StartNode.svelte";
     import EndNode from "./EndNode.svelte";
     import { t } from "$lib/translations";
+    import { nodesStoreData, selectedNodeStore } from "$lib/store/flowtore";
+
+    import { sidebarState as sidebar, sidebarState } from "./+page.svelte";
+    import { onMount } from "svelte";
 
     const nodeTypes = {
         custom: CustomNode,
@@ -26,8 +30,14 @@
 
     let nodes = $state.raw<Node[]>(getNodes());
     let edges = $state.raw<Edge[]>(getEdges());
+
     const { updateNode, screenToFlowPosition } = useSvelteFlow();
 
+    onMount(() => {
+        // Initialize the nodes and edges from the store
+        nodes;
+        edges;
+    });
     const handleConnectEnd: OnConnectEnd = (event, connectionState) => {
         if (connectionState.isValid) return;
 
@@ -101,6 +111,11 @@
     {nodeTypes}
     bind:edges
     fitView
+    onnodeclick={(event) => {
+        const node = event.node;
+        selectedNodeStore.set(node);
+        sidebarState.isSidebarOpen = true;
+    }}
     onconnectend={handleConnectEnd}
 >
     <MiniMap />
