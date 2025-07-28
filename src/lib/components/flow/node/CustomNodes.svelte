@@ -21,7 +21,7 @@
     <header
         class="flex items-center justify-center h-2 flex-shrink-0
                 rounded-t-lg font-bold text-[8px] px-2 py-1
-                text-white {nodeColors.get('approver')}"
+                text-white {nodeColors.get(data.type as string)}"
     >
         <div class="flex-grow overflow-hidden whitespace-nowrap text-ellipsis">
             <input
@@ -77,15 +77,18 @@
             </span>
         {/if}
     </footer>
-
-    <Handle
-        type="target"
-        position={Position.Top}
-        class=" !bg-teal-500 rounded-b-md !left-1/2 -translate-x-1/2"
-    />
-    <Handle
-        type="source"
-        position={Position.Bottom}
-        class=" !bg-teal-500 rounded-t-md !left-1/2 -translate-x-1/2"
-    />
+    {#if data.type !== "start"}
+        <Handle
+            type="target"
+            position={Position.Top}
+            class=" !bg-teal-500 rounded-b-md !left-1/2 -translate-x-1/2"
+        />
+    {/if}
+    {#if data.type !== "end"}
+        <Handle
+            type="source"
+            position={Position.Bottom}
+            class=" !bg-teal-500 rounded-t-md !left-1/2 -translate-x-1/2"
+        />
+    {/if}
 </div>

@@ -12,14 +12,17 @@
     } from "@xyflow/svelte";
     import "@xyflow/svelte/dist/style.css";
 
-    import { getNodes, generateRondomId, getEdges } from "$lib/flow/initNodes";
-    import CustomNode from "./CustomNodes.svelte";
-    import StartNode from "./StartNode.svelte";
-    import EndNode from "./EndNode.svelte";
+    import { generateRondomId, getFlowData } from "$lib/flow/initNodes";
+    import CustomNode from "$lib/components/flow/node/CustomNodes.svelte";
+    import StartNode from "$lib/components/flow/node/StartNode.svelte";
+    import EndNode from "$lib/components/flow/node/EndNode.svelte";
     import { t } from "$lib/translations";
-    import { nodesStoreData, selectedNodeStore } from "$lib/store/flowtore";
+    import {
+        nodesStoreData,
+        selectedNodeStore,
+        sidebarOpenStore,
+    } from "$lib/store/flowtore";
 
-    import { sidebarState as sidebar, sidebarState } from "./+page.svelte";
     import { onMount } from "svelte";
 
     const nodeTypes = {
@@ -28,8 +31,11 @@
         start: StartNode,
     };
 
-    let nodes = $state.raw<Node[]>(getNodes());
-    let edges = $state.raw<Edge[]>(getEdges());
+    const { nodes: getNodes, edges: getEdges } = getFlowData();
+    //let nodes = $state.raw<Node[]>(getNodes());
+    //let edges = $state.raw<Edge[]>(getEdges());
+    let nodes = $state.raw<Node[]>(getNodes);
+    let edges = $state.raw<Edge[]>(getEdges);
 
     const { updateNode, screenToFlowPosition } = useSvelteFlow();
 
@@ -114,7 +120,7 @@
     onnodeclick={(event) => {
         const node = event.node;
         selectedNodeStore.set(node);
-        sidebarState.isSidebarOpen = true;
+        $sidebarOpenStore = true;
     }}
     onconnectend={handleConnectEnd}
 >

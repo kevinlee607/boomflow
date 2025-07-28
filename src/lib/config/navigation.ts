@@ -1,74 +1,74 @@
 // src/lib/config/navigation.ts
-
+import { t } from "$lib/translations";
 export const navList = [
   {
-    name: "首页",
+    name: "nav.index",
     href: "/",
   },
   {
-    name: "工作台",
+    name: "nav.workBench",
     href: "#",
   },
   {
-    name: "数据",
+    name: "nav.data.title",
     children: [
       {
-        name: "数据列表",
+        name: "nav.data.children.list",
         href: "#",
       },
       {
-        name: "数据分析",
+        name: "nav.data.children.analysis",
         href: "#",
       },
       {
-        name: "数据可视化",
+        name: "nav.data.children.visualization",
         href: "#",
       },
     ],
   },
   {
-    name: "流程",
+    name: "nav.flow.title",
     children: [
       {
-        name: "流程设计",
+        name: "nav.flow.children.design",
         href: "/flow",
       },
       {
-        name: "流程列表",
-        href: "#",
+        name: "nav.flow.children.list",
+        href: "/flow/list",
       },
       {
-        name: "流程实例",
-        href: "#",
-      },
-    ],
-  },
-  {
-    name: "系统",
-    children: [
-      {
-        name: "用户管理",
-        href: "#",
-      },
-      {
-        name: "角色管理",
-        href: "#",
-      },
-      {
-        name: "权限管理",
+        name: "nav.flow.children.instance",
         href: "#",
       },
     ],
   },
   {
-    name: "设置",
+    name: "nav.system.title",
     children: [
       {
-        name: "个人设置",
+        name: "nav.system.children.userManagement",
         href: "#",
       },
       {
-        name: "系统设置",
+        name: "nav.system.children.roleManagement",
+        href: "#",
+      },
+      {
+        name: "nav.system.children.permissionManagement",
+        href: "#",
+      },
+    ],
+  },
+  {
+    name: "nav.settings.title",
+    children: [
+      {
+        name: "nav.settings.children.profile",
+        href: "#",
+      },
+      {
+        name: "nav.settings.children.systemSettings",
         href: "#",
       },
     ],

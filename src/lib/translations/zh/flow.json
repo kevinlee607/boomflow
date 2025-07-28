@@ -17,5 +17,19 @@
   "edge": {
     "defaultName": "默认连线",
     "condition": "条件分支"
+  },
+  "richTextEditor": {
+    "operator": "操作符",
+    "inputName": "条件/公式"
+  },
+  "flowList": {
+    "title": "流程列表",
+    "pid": "流程ID",
+    "appID": "应用ID",
+    "name": "流程ID",
+    "displayName": "流程名称",
+    "creatorID": "创建人ID",
+    "createdAt": "创建时间",
+    "updatedAt": "更新时间"
   }
 }

@@ -45,7 +45,7 @@
               "web.pipelineNode/updateFormType": "work-form"
             }
           },
-          "type": "form-update-data",
+          "type": "data-update",
           "position": {
             "x": 0,
             "y": 100
@@ -94,8 +94,7 @@
             "y": 200
           },
           "spec": {
-            "config": [],
-            "params": [
+            "config": [
               {
                 "key": "appID",
                 "value": "$(params.appID)"
@@ -115,7 +114,9 @@
               {
                 "key": "nodeDefKey",
                 "value": "approvew-d92SYv_PUDSbEEQrtRW"
-              },
+              }
+            ],
+            "params": [
               {
                 "key": "flowCreatedBy",
                 "value": "600972366"
@@ -188,7 +189,7 @@
               "web.pipelineNode/updateFormType": "work-form"
             }
           },
-          "type": "form-update-data",
+          "type": "data-update",
           "position": {
             "x": 0,
             "y": 300

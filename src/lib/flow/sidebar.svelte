@@ -1,20 +1,22 @@
 <script lang="ts">
-    import { selectedNodeStore } from "$lib/store/flowtore";
+    import { selectedNodeStore, sidebarOpenStore } from "$lib/store/flowtore"; // Ensure sidebarOpenStore is imported
     import { type Node } from "@xyflow/svelte";
     import { t } from "$lib/translations";
-    // IMPORTANT: Ensure this path is correct and sidebarState is a properly exported Svelte store
-    import { sidebarState } from "../../routes/flow/+page.svelte";
-    import CustomNodes from "../../routes/flow/CustomNodes.svelte";
-
-    function closeSidebar() {
-        sidebarState.isSidebarOpen = false;
-    }
+    import RichTextEditor from "$lib/components/flow/richTextEditor.svelte";
 
     let currentNode: Node | null;
     // Auto-subscribe to the store
     $: currentNode = $selectedNodeStore;
 
     $: nodeParams = currentNode?.data?.param || {};
+    // No need for a separate `isSidebarOpen` reactive variable if you just want to update the store.
+    // If you need it for conditional rendering, it's fine, but the update should target the store.
+
+    function closeSidebar(): void {
+        // CORRECT WAY TO CLOSE THE SIDEBAR (update the store)
+        $sidebarOpenStore = false; // Assign directly to the store variable using the $ shorthand
+        // OR: sidebarOpenStore.set(false); // Explicit store method
+    }
 </script>
 
 <div class="flex flex-col justify-between h-full">
@@ -37,9 +39,7 @@
                     hover:bg-gray-200 focus:outline-none z-50 border-none
                     md:block hidden
                 "
-                aria-label={sidebarState.isSidebarOpen
-                    ? "Hide sidebar"
-                    : "Show sidebar"}
+                aria-label={$sidebarOpenStore ? "Hide sidebar" : "Show sidebar"}
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -68,9 +68,15 @@
                     </h3>
                     {#if Array.isArray(value) && value.length > 0}
                         {#each value as p}
-                            <div class="text-sm text-gray-600 mb-2">
-                                {p.key || "N/A"}: {p.value || "N/A"}
-                            </div>
+                            {#if p.key === "rule"}
+                                <div class="text-sm text-gray-600 mb-2">
+                                    <RichTextEditor />
+                                </div>
+                            {:else}
+                                <div class="text-sm text-gray-600 mb-2">
+                                    {p.key || "N/A"}: {p.value || "N/A"}
+                                </div>
+                            {/if}
                         {/each}
                     {/if}
                     <button

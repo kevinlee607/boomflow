@@ -1,28 +1,24 @@
 import type { Node, Edge } from "@xyflow/svelte";
 import { t } from "$lib/translations";
 
-import { type NodeData, fetchDataWithZod } from "$lib/api/flownode";
+import { fetchDataWithZod } from "$lib/api/common";
+import { nodeSchema, type NodeData } from "$lib/api/flow/schema/node";
 import { nodesStoreData } from "$lib/store/flowtore";
 
-const ApiUrl = "http://localhost:8090/";
+const ApiUrl = "http://localhost:8090/flow";
 
-const resp = await fetchDataWithZod(ApiUrl);
+const resp = await fetchDataWithZod(ApiUrl, nodeSchema);
 
-nodesStoreData.set(resp);
-
-export function getNodes(): Node[] {
-  const initialNodes: Node[] = [];
-  resp.data.spec.nodes.forEach((n) => {
+export function getFlowData(): { nodes: Node[]; edges: Edge[] } {
+  const nodes: Node[] = [];
+  const edges: Edge[] = [];
+  nodesStoreData.set(resp);
+  resp.data.spec.nodes.forEach((n: any) => {
     const node: Node = {
       id: n.name,
-      type: (() => {
-        if (n.type === "end") {
-          return "end";
-        } else {
-          return "custom";
-        }
-      })(),
+      type: "custom",
       data: {
+        type: n.type,
         name:
           n.Metadata?.Annotations?.["web.pipelineNode/name"] ||
           t.get("flow.node.defaultName", { item: n.name }),
@@ -30,14 +26,10 @@ export function getNodes(): Node[] {
       },
       position: n.position || { x: 0, y: 0 },
     };
-    initialNodes.push(node);
+    nodes.push(node);
   });
-  return initialNodes;
-}
 
-export function getEdges(): Edge[] {
-  const initialEdges: Edge[] = [];
-  resp.data.spec.edges.forEach((e) => {
+  resp.data.spec.edges.forEach((e: any) => {
     const edge: Edge = {
       id: e.id,
       source: e.source,
@@ -47,10 +39,11 @@ export function getEdges(): Edge[] {
         label: t.get("flow.edge.defaultName", { item: e.id }),
       },
     };
-    initialEdges.push(edge);
+    edges.push(edge);
   });
-  return initialEdges;
+  return { nodes, edges };
 }
+
 export function generateRondomId(prefix: string, length: number): string {
   let id = Math.random()
     .toString(36)

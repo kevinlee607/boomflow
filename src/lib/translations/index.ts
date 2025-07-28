@@ -14,6 +14,16 @@ export const config: Config = {
       loader: async () => await import("./en/flow.json"),
     },
     {
+      locale: "en",
+      key: "common",
+      loader: async () => await import("./en/common.json"),
+    },
+    {
+      locale: "en",
+      key: "nav",
+      loader: async () => await import("./en/nav.json"),
+    },
+    {
       locale: "zh",
       key: "flow",
       loader: async () => await import("./zh/flow.json"),
@@ -24,9 +34,9 @@ export const config: Config = {
       loader: async () => await import("./zh/common.json"),
     },
     {
-      locale: "en",
-      key: "common",
-      loader: async () => await import("./en/common.json"),
+      locale: "zh",
+      key: "nav",
+      loader: async () => await import("./en/nav.json"),
     },
   ],
 };

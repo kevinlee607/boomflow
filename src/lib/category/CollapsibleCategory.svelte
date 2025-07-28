@@ -1,5 +1,6 @@
 <script lang="ts">
     import { page } from "$app/stores";
+    import { t } from "$lib/translations";
 
     // 接收 category 数据作为 props
     let { category } = $props();
@@ -37,7 +38,7 @@
             aria-controls={`menu-${category.name.replace(/\s+/g, "-")}`}
             aria-label={`Toggle ${category.name} menu`}
         >
-            <span class="flex-grow text-left">{category.name}</span>
+            <span class="flex-grow text-left">{$t(category.name)}</span>
             <svg
                 class="w-4 h-4 transition-transform duration-200 {isOpen
                     ? 'rotate-90'
@@ -64,10 +65,10 @@
                 ? 'bg-blue-100 text-blue-700 font-semibold'
                 : 'hover:bg-gray-100 text-gray-700'}"
         >
-            {category.name}
+            {$t(category.name)}
         </a>
     {:else}
-        {category.name}
+        {$t(category.name)}
     {/if}
 </h3>
 
@@ -90,7 +91,7 @@
                         : 'hover:bg-gray-100 text-gray-700'}"
                 >
                     <span class="mr-2">🔗</span>
-                    {item.name}
+                    {$t(item.name)}
                 </a>
             </li>
         {/each}

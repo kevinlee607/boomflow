@@ -1,0 +1,35 @@
+{
+  "index": "首页",
+  "workBench": "工作台",
+  "data": {
+    "title": "数据",
+    "children": {
+      "list": "数据列表",
+      "analysis": "数据分析",
+      "visualization": "数据可视化"
+    }
+  },
+  "flow": {
+    "title": "流程",
+    "children": {
+      "design": "流程设计",
+      "list": "流程列表",
+      "instance": "流程实例"
+    }
+  },
+  "system": {
+    "title": "系统",
+    "children": {
+      "userManagement": "用户管理",
+      "roleManagement": "角色管理",
+      "permissionManagement": "权限管理"
+    }
+  },
+  "settings": {
+    "title": "设置",
+    "children": {
+      "profile": "个人设置",
+      "systemSettings": "系统设置"
+    }
+  }
+}
